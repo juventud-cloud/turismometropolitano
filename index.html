@@ -500,15 +500,15 @@
     .cards {
       flex: 1 1 auto;
       min-height: 0;
-      padding: 18px;
+      padding: 14px;
       overflow-y: auto;
       overflow-x: hidden;
       overscroll-behavior: contain;
       display: grid;
-      gap: 14px;
+      gap: 12px;
       align-content: start;
       max-height: none;
-      scroll-padding: 18px;
+      scroll-padding: 14px;
     }
     .cards::-webkit-scrollbar { width: 10px; }
     .cards::-webkit-scrollbar-track { background: #eef3fb; border-radius: 999px; }
@@ -516,13 +516,14 @@
     .cards::-webkit-scrollbar-thumb:hover { background: rgba(11,30,68,.38); }
     .result-card {
       border: 1px solid rgba(11,30,68,.09);
-      border-radius: 22px;
+      border-radius: 20px;
       overflow: hidden;
       background: white;
-      box-shadow: 0 10px 24px rgba(11,30,68,.075);
+      box-shadow: 0 10px 24px rgba(11,30,68,.07);
       display: grid;
-      grid-template-columns: 126px minmax(0, 1fr);
-      min-height: 138px;
+      grid-template-columns: 84px minmax(0, 1fr);
+      min-height: 0;
+      align-items: stretch;
     }
     .result-card:last-child { margin-bottom: 2px; }
     .result-card__image {
@@ -536,11 +537,11 @@
       content: "";
       position: absolute;
       right: -38px;
-      top: -22px;
-      width: 125px;
-      height: 125px;
+      top: 12px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      border: 20px solid rgba(255,255,255,.24);
+      border: 16px solid rgba(255,255,255,.22);
     }
     .result-card__image img {
       width: 100%;
@@ -550,8 +551,14 @@
       position: absolute;
       inset: 0;
     }
-    .result-card__body { padding: 13px 14px 12px; min-width: 0; }
-    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .result-card__body {
+      padding: 12px 13px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 7px; }
     .tag {
       display: inline-flex;
       align-items: center;
@@ -568,8 +575,8 @@
     .result-card h3 {
       margin: 0;
       font-family: "Baloo 2", system-ui, sans-serif;
-      font-size: 1.16rem;
-      line-height: 1.03;
+      font-size: 1.1rem;
+      line-height: 1.05;
       color: var(--azul-noche);
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -577,12 +584,12 @@
       overflow: hidden;
     }
     .meta {
-      margin: 7px 0 0;
+      margin: 6px 0 0;
       display: grid;
-      gap: 3px;
+      gap: 2px;
       color: var(--texto-suave);
       font-weight: 700;
-      font-size: .89rem;
+      font-size: .86rem;
     }
     .meta span {
       display: -webkit-box;
@@ -591,17 +598,17 @@
       overflow: hidden;
     }
     .desc {
-      margin: 7px 0 0;
+      margin: 6px 0 0;
       color: #344054;
-      line-height: 1.28;
-      font-size: .92rem;
+      line-height: 1.25;
+      font-size: .9rem;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
     .card-actions {
-      margin-top: 10px;
+      margin-top: 9px;
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
@@ -614,8 +621,12 @@
       color: white;
       font-weight: 900;
       text-decoration: none;
-      font-size: .82rem;
-      line-height: 1.15;
+      font-size: .8rem;
+      line-height: 1.1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
     }
     .mini-btn.alt { background: #eef4ff; color: var(--azul-noche); }
     .empty-state {
@@ -844,6 +855,7 @@
       .explorer { grid-template-columns: 1fr; height: auto; min-height: 0; }
       .list-panel { height: min(680px, 76vh); min-height: 420px; border-left: 0; border-top: 1px solid rgba(11,30,68,.08); }
       .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .result-card { grid-template-columns: 76px minmax(0, 1fr); }
       .map-shell { height: 560px; min-height: 560px; }
     }
     @media (max-width: 850px) {
@@ -1316,14 +1328,18 @@
 
       const categoria = clean(source.categoria || source.Categoría || source.Categoria || source["Categoría"] || inferCategoria(source));
       const tipo = clean(source.tipo || source.Tipo || source["Tipo de evento o sitio turístico"] || inferTipo(`${nombre} ${source.descripcion || source.Descripción || ""}`));
-      const fecha = clean(source.fecha || source.Fecha || source["Fecha y hora (para los eventos)"] || source.fecha_evento || source.fechaHora);
-      const hora = clean(source.hora || source.Hora || source["Hora:"] || source.horario || source.Horario);
+      const fechaRaw = source.fecha || source.Fecha || source["Fecha y hora (para los eventos)"] || source.fecha_evento || source.fechaHora;
+      const horaRaw = source.hora || source.Hora || source["Hora:"] || source.horario || source.Horario;
+      const fecha = formatDisplayDate(fechaRaw);
+      const hora = formatDisplayTime(horaRaw);
       const ubicacion = clean(source.ubicacion || source.Ubicación || source.Ubicacion || source["Ubicación del lugar o evento (INSERTAR EL LINK DE LA UBICACIÓN DE GOOGLE MAPS)"] || source.ubicacion_texto || source.direccion || source.Dirección || source.Direccion);
       const descripcion = clean(source.descripcion || source.Descripción || source["Descripción del evento o sitio (incluir si se cobra entrada)"] || source.description);
       const media = firstUrl(source.multimedia_url || source.media || source.imagen || source.imagen_url || source["Piezas gráficas y multimedia (fotos, flyers)"] || "");
       const web = normalizeLink(source.web_instagram || source.web || source.instagram || source["Página web o instagram"] || "");
-      const mapsUrl = normalizeLink(source.maps_url || source.mapsUrl || source.google_maps || source["Link de Google Maps"] || source["Google Maps"] || firstUrl(ubicacion) || "") || makeMapsSearchUrl([nombre, ubicacion, localidad, "Córdoba Argentina"].join(" "));
-      const coords = resolveCoords(source, localidad, index || 0, mapsUrl, ubicacion);
+      const mapsRaw = source.maps_url || source.mapsUrl || source.google_maps || source["Link de Google Maps"] || source["Google Maps"] || firstUrl(ubicacion) || "";
+      const coords = resolveCoords(source, localidad, index || 0, mapsRaw, ubicacion);
+      const mapsUrl = makeDirectionsUrl(coords, mapsRaw, [nombre, displayLocation(ubicacion, coords, localidad), localidad, "Córdoba Argentina"].join(" "));
+      const shownLocation = displayLocation(ubicacion, coords, localidad);
 
       return {
         id: String(source.id || source.ID || index || cryptoSafeId(nombre + localidad)),
@@ -1334,6 +1350,7 @@
         fecha,
         hora,
         ubicacion,
+        ubicacion_mostrada: shownLocation,
         descripcion,
         multimedia_url: media,
         web_instagram: web,
@@ -1441,7 +1458,7 @@
       const fecha = els.fecha.value;
 
       state.filteredItems = state.allItems.filter(item => {
-        const haystack = normalizeText([item.nombre, item.localidad, item.categoria, item.tipo, item.ubicacion, item.descripcion].join(" "));
+        const haystack = normalizeText([item.nombre, item.localidad, item.categoria, item.tipo, item.ubicacion, item.ubicacion_mostrada, item.descripcion].join(" "));
         const matchesQuery = !query || haystack.includes(query);
         const matchesLocalidad = !localidad || item.localidad === localidad;
         const matchesCategoria = !categoria || item.categoria === categoria;
@@ -1532,7 +1549,7 @@
             <h3>${escapeHtml(item.nombre)}</h3>
             <div class="meta">
               ${item.fecha || item.hora ? `<span>${escapeHtml([item.fecha, item.hora].filter(Boolean).join(" · "))}</span>` : ""}
-              ${item.ubicacion ? `<span>${escapeHtml(item.ubicacion)}</span>` : ""}
+              ${item.ubicacion_mostrada ? `<span>${escapeHtml(item.ubicacion_mostrada)}</span>` : ""}
             </div>
             ${item.descripcion ? `<p class="desc">${escapeHtml(item.descripcion)}</p>` : ""}
             <div class="card-actions">
@@ -1586,7 +1603,7 @@
         <div class="detail-list">
           <div class="detail-item"><small>Localidad</small><span>${escapeHtml(item.localidad)}</span></div>
           ${item.fecha || item.hora ? `<div class="detail-item"><small>Fecha y horario</small><span>${escapeHtml([item.fecha, item.hora].filter(Boolean).join(" · "))}</span></div>` : ""}
-          ${item.ubicacion ? `<div class="detail-item"><small>Ubicación</small><span>${escapeHtml(item.ubicacion)}</span></div>` : ""}
+          ${item.ubicacion_mostrada ? `<div class="detail-item"><small>Ubicación</small><span>${escapeHtml(item.ubicacion_mostrada)}</span></div>` : ""}
         </div>
         ${item.descripcion ? `<div class="drawer__text">${escapeHtml(item.descripcion)}</div>` : ""}
         <div class="drawer__actions">
@@ -1622,6 +1639,66 @@
         return date >= saturday && date <= sunday;
       }
       return true;
+    }
+
+    function formatDisplayDate(value) {
+      const text = clean(value);
+      if (!text) return "";
+      const iso = text.match(/(20\d{2})[-/](\d{1,2})[-/](\d{1,2})/);
+      if (iso) return `${pad2(iso[3])}/${pad2(iso[2])}/${iso[1]}`;
+      const ar = text.match(/(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})/);
+      if (ar) {
+        let year = ar[3];
+        if (year.length === 2) year = `20${year}`;
+        return `${pad2(ar[1])}/${pad2(ar[2])}/${year}`;
+      }
+      return text.replace(/\s+00:00:00$/, "");
+    }
+
+    function formatDisplayTime(value) {
+      const text = clean(value);
+      if (!text) return "";
+      const match = text.match(/(?:^|\s)(\d{1,2}):(\d{2})(?::\d{2})?$/);
+      if (match) return `${pad2(match[1])}:${match[2]} hs`;
+      const decimal = Number(String(value).replace(',', '.'));
+      if (Number.isFinite(decimal) && decimal >= 0 && decimal < 1) {
+        const total = Math.round(decimal * 24 * 60);
+        const hh = Math.floor(total / 60) % 24;
+        const mm = total % 60;
+        return `${pad2(hh)}:${pad2(mm)} hs`;
+      }
+      return text;
+    }
+
+    function pad2(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function looksLikeCoords(value) {
+      return !!parseCoordsFromText(value) && /^\s*-?\d{1,3}[\.,]\d+\s*[,; ]\s*-?\d{1,3}[\.,]\d+\s*$/.test(String(value || ""));
+    }
+
+    function displayLocation(ubicacion, coords, localidad) {
+      const text = clean(ubicacion);
+      if (!text || looksLikeCoords(text)) return localidad ? `Ubicación en ${cleanLocalidad(localidad)}` : "Ubicación disponible";
+      if (firstUrl(text) && coords) return localidad ? `Ubicación en ${cleanLocalidad(localidad)}` : "Ubicación disponible";
+      return text;
+    }
+
+    function makeDirectionsUrl(coords, raw, fallbackQuery) {
+      const rawUrl = normalizeMapUrl(raw);
+      if (coords && Number.isFinite(coords.lat) && Number.isFinite(coords.lng)) {
+        return `https://www.google.com/maps/dir/?api=1&destination=${coords.lat},${coords.lng}`;
+      }
+      if (rawUrl) return rawUrl;
+      return makeMapsSearchUrl(fallbackQuery);
+    }
+
+    function normalizeMapUrl(value) {
+      const url = normalizeLink(value);
+      if (!url) return "";
+      if (/google\.[^/]+\/maps|maps\.app\.goo\.gl|goo\.gl\/maps/i.test(url)) return url;
+      return "";
     }
 
     function parseDate(value) {
