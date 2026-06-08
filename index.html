@@ -494,10 +494,10 @@
       font-weight: 700;
     }
     .cards {
-      padding: 14px;
+      padding: 18px;
       overflow: auto;
       display: grid;
-      gap: 12px;
+      gap: 22px;
       align-content: start;
       max-height: 610px;
     }
@@ -849,7 +849,7 @@
       .map-shell { min-height: 470px; }
       #mapCanvas, .map-fallback { min-height: 470px; }
       .legend { display: none; }
-      .cards { grid-template-columns: 1fr; padding: 12px; }
+      .cards { grid-template-columns: 1fr; padding: 14px; gap: 16px; }
       .stats { grid-template-columns: 1fr; }
       .stat-card { padding: 16px; }
       .drawer__panel { width: 100%; }
@@ -1270,7 +1270,7 @@
     }
 
     function normalizeItem(source, index) {
-      const localidad = clean(source.localidad || source.Localidad || source.municipio || source.Municipio);
+      const localidad = clean(source.localidad || source.Localidad || source.municipio || source.Municipio || source.comuna || source.Comuna);
       const nombre = clean(source.nombre || source.Nombre || source["Nombre (del lugar o evento)"] || source.name || source.titulo || source.título);
       if (!localidad || !nombre) return null;
 
@@ -1278,12 +1278,12 @@
       const tipo = clean(source.tipo || source.Tipo || source["Tipo de evento o sitio turístico"] || inferTipo(`${nombre} ${source.descripcion || source.Descripción || ""}`));
       const fecha = clean(source.fecha || source.Fecha || source["Fecha y hora (para los eventos)"] || source.fecha_evento || source.fechaHora);
       const hora = clean(source.hora || source.Hora || source["Hora:"] || source.horario || source.Horario);
-      const ubicacion = clean(source.ubicacion || source.Ubicación || source.Ubicacion || source["Ubicación del lugar o evento (INSERTAR EL LINK DE LA UBICACIÓN DE GOOGLE MAPS)"] || source.ubicacion_texto);
+      const ubicacion = clean(source.ubicacion || source.Ubicación || source.Ubicacion || source["Ubicación del lugar o evento (INSERTAR EL LINK DE LA UBICACIÓN DE GOOGLE MAPS)"] || source.ubicacion_texto || source.direccion || source.Dirección || source.Direccion);
       const descripcion = clean(source.descripcion || source.Descripción || source["Descripción del evento o sitio (incluir si se cobra entrada)"] || source.description);
       const media = firstUrl(source.multimedia_url || source.media || source.imagen || source.imagen_url || source["Piezas gráficas y multimedia (fotos, flyers)"] || "");
       const web = normalizeLink(source.web_instagram || source.web || source.instagram || source["Página web o instagram"] || "");
-      const mapsUrl = normalizeLink(source.maps_url || source.mapsUrl || source.google_maps || firstUrl(ubicacion) || "") || makeMapsSearchUrl([nombre, ubicacion, localidad, "Córdoba Argentina"].join(" "));
-      const coords = resolveCoords(source, localidad, index || 0, mapsUrl);
+      const mapsUrl = normalizeLink(source.maps_url || source.mapsUrl || source.google_maps || source["Link de Google Maps"] || source["Google Maps"] || firstUrl(ubicacion) || "") || makeMapsSearchUrl([nombre, ubicacion, localidad, "Córdoba Argentina"].join(" "));
+      const coords = resolveCoords(source, localidad, index || 0, mapsUrl, ubicacion);
 
       return {
         id: String(source.id || source.ID || index || cryptoSafeId(nombre + localidad)),
@@ -1305,15 +1305,74 @@
       };
     }
 
-    function resolveCoords(source, localidad, index, mapsUrl) {
-      const lat = toNumber(source.lat || source.Lat || source.latitud || source.Latitud);
-      const lng = toNumber(source.lng || source.Lng || source.longitud || source.Longitud || source.lon || source.Lon);
-      if (Number.isFinite(lat) && Number.isFinite(lng)) return { lat, lng };
-      const parsed = parseCoordsFromText(mapsUrl || "");
-      if (parsed) return parsed;
+    function resolveCoords(source, localidad, index, mapsUrl, ubicacion) {
+      const latRaw = pickFirstField(source, [
+        "lat", "Lat", "LAT", "latitud", "Latitud", "LATITUD", "latitude", "Latitude", "coordenada_lat", "coordenada latitud", "Coordenada latitud"
+      ]);
+      const lngRaw = pickFirstField(source, [
+        "lng", "Lng", "LNG", "longitud", "Longitud", "LONGITUD", "longitude", "Longitude", "lon", "Lon", "coordenada_lng", "coordenada longitud", "Coordenada longitud"
+      ]);
+
+      const direct = normalizeCoords(toNumber(latRaw), toNumber(lngRaw));
+      if (direct) return direct;
+
+      const candidateTexts = [
+        source.coordenadas,
+        source.Coordenadas,
+        source.COORDENADAS,
+        source["Latitud y longitud"],
+        source["Coordenadas Google Maps"],
+        source["Ubicación"],
+        source["Ubicacion"],
+        source["Ubicación del lugar o evento (INSERTAR EL LINK DE LA UBICACIÓN DE GOOGLE MAPS)"],
+        ubicacion,
+        mapsUrl,
+        ...Object.values(source || {}).filter(value => /maps|google|@|-\d{1,3}[\.,]\d+/i.test(String(value || "")))
+      ];
+
+      for (const value of candidateTexts) {
+        const parsed = parseCoordsFromText(value);
+        if (parsed) return parsed;
+      }
+
       const base = LOCALIDAD_COORDS[normalizeText(cleanLocalidad(localidad))] || CONFIG.DEFAULT_CENTER;
       const offset = offsetForIndex(index);
       return { lat: base.lat + offset.lat, lng: base.lng + offset.lng };
+    }
+
+    function pickFirstField(source, keys) {
+      if (!source) return "";
+      for (const key of keys) {
+        if (source[key] !== undefined && source[key] !== null && String(source[key]).trim() !== "") return source[key];
+      }
+      const normalized = {};
+      Object.keys(source).forEach(key => { normalized[normalizeText(key)] = source[key]; });
+      for (const key of keys) {
+        const value = normalized[normalizeText(key)];
+        if (value !== undefined && value !== null && String(value).trim() !== "") return value;
+      }
+      return "";
+    }
+
+    function normalizeCoords(lat, lng) {
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+
+      if (isCordobaCoords(lat, lng) || isArgentinaCoords(lat, lng)) return { lat, lng };
+      if (isCordobaCoords(lng, lat) || isArgentinaCoords(lng, lat)) return { lat: lng, lng: lat };
+
+      // Si vienen invertidas como longitud/latitud, evita mandar puntos al mar.
+      if (lng >= -35 && lng <= -29 && lat >= -66.5 && lat <= -62) return { lat: lng, lng: lat };
+
+      // Fuera de Argentina: se descarta y se usa la localidad como respaldo.
+      return null;
+    }
+
+    function isCordobaCoords(lat, lng) {
+      return lat >= -33.5 && lat <= -29.5 && lng >= -66.8 && lng <= -62.5;
+    }
+
+    function isArgentinaCoords(lat, lng) {
+      return lat >= -55 && lat <= -21 && lng >= -74 && lng <= -53;
     }
 
     function offsetForIndex(index) {
@@ -1585,16 +1644,43 @@
     }
 
     function toNumber(value) {
-      const number = Number(String(value ?? "").replace(",", "."));
+      const text = String(value ?? "").trim();
+      if (!text) return NaN;
+      const normalized = text.replace(/,/g, ".");
+      const number = Number(normalized);
       return Number.isFinite(number) ? number : NaN;
     }
 
+    function numberFromToken(value) {
+      return Number(String(value || "").replace(",", "."));
+    }
+
     function parseCoordsFromText(text) {
-      const value = String(text || "");
-      let match = value.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
-      if (match) return { lat: Number(match[1]), lng: Number(match[2]) };
-      match = value.match(/[?&](?:query|q)=(-?\d+\.\d+),(-?\d+\.\d+)/);
-      if (match) return { lat: Number(match[1]), lng: Number(match[2]) };
+      const value = decodeURIComponent(String(text || ""));
+      if (!value) return null;
+
+      const patterns = [
+        /@(-?\d{1,3}(?:[\.,]\d+)?),\s*(-?\d{1,3}(?:[\.,]\d+)?)/i,
+        /!3d(-?\d{1,3}(?:[\.,]\d+)?)!4d(-?\d{1,3}(?:[\.,]\d+)?)/i,
+        /[?&](?:query|q|ll)=(-?\d{1,3}(?:[\.,]\d+)?),\s*(-?\d{1,3}(?:[\.,]\d+)?)/i
+      ];
+
+      for (const pattern of patterns) {
+        const match = value.match(pattern);
+        if (match) {
+          const coords = normalizeCoords(numberFromToken(match[1]), numberFromToken(match[2]));
+          if (coords) return coords;
+        }
+      }
+
+      // Soporta campos escritos manualmente: "-31.333, -63.620" o "-31,333 ; -63,620".
+      const numbers = value.match(/-?\d{1,3}(?:[\.,]\d+)?/g);
+      if (numbers && numbers.length >= 2) {
+        for (let i = 0; i < numbers.length - 1; i++) {
+          const coords = normalizeCoords(numberFromToken(numbers[i]), numberFromToken(numbers[i + 1]));
+          if (coords) return coords;
+        }
+      }
       return null;
     }
 
