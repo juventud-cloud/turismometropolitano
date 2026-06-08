@@ -908,6 +908,75 @@
       .drawer__body { padding: 20px; }
       .footer__inner { align-items: flex-start; }
     }
+
+
+    /* V9: fichas simples y responsivas para público general */
+    .cards {
+      gap: 14px;
+      padding: 16px;
+    }
+    .cards .result-card,
+    .cards .result-card--simple {
+      display: block;
+      border-radius: 20px;
+      overflow: visible;
+      min-height: auto;
+      background: #fff;
+    }
+    .cards .result-card__image {
+      display: none !important;
+    }
+    .cards .result-card__body {
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+      justify-content: stretch;
+      min-width: 0;
+    }
+    .cards .result-card h3 {
+      font-size: clamp(1.05rem, 1.6vw, 1.24rem);
+      line-height: 1.08;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      word-break: break-word;
+    }
+    .cards .meta {
+      margin: 0;
+      color: var(--texto-suave);
+      font-size: .94rem;
+      font-weight: 800;
+    }
+    .cards .meta span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .cards .card-actions {
+      margin-top: 2px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .cards .mini-btn {
+      flex: 1 1 112px;
+      min-width: 0;
+      text-align: center;
+      justify-content: center;
+      padding: 10px 11px;
+      font-size: .88rem;
+      white-space: nowrap;
+    }
+    @media (max-width: 1120px) {
+      .cards { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .cards { grid-template-columns: 1fr; padding: 14px; gap: 12px; }
+      .cards .result-card__body { padding: 14px; }
+      .cards .card-actions { display: grid; grid-template-columns: 1fr; }
+      .cards .mini-btn { width: 100%; }
+    }
+
   </style>
 </head>
 <body>
@@ -1536,30 +1605,21 @@
         els.cards.innerHTML = `<div class="empty-state"><h3>No encontramos resultados</h3><p>Probá cambiar los filtros o realizar una búsqueda más amplia.</p></div>`;
         return;
       }
-      els.cards.innerHTML = state.filteredItems.map(item => `
-        <article class="result-card">
-          <div class="result-card__image">
-            ${item.multimedia_url ? `<img src="${escapeAttr(item.multimedia_url)}" alt="${escapeAttr(item.nombre)}" loading="lazy" onerror="this.remove()">` : ""}
-          </div>
+      els.cards.innerHTML = state.filteredItems.map(item => {
+        const when = [item.fecha, item.hora].filter(Boolean).join(" · ");
+        return `
+        <article class="result-card result-card--simple">
           <div class="result-card__body">
-            <div class="badges">
-              <span class="tag"><i style="background:${escapeAttr(item.color)}"></i>${escapeHtml(item.tipo)}</span>
-              <span class="tag">${escapeHtml(item.localidad)}</span>
-            </div>
             <h3>${escapeHtml(item.nombre)}</h3>
-            <div class="meta">
-              ${item.fecha || item.hora ? `<span>${escapeHtml([item.fecha, item.hora].filter(Boolean).join(" · "))}</span>` : ""}
-              ${item.ubicacion_mostrada ? `<span>${escapeHtml(item.ubicacion_mostrada)}</span>` : ""}
-            </div>
-            ${item.descripcion ? `<p class="desc">${escapeHtml(item.descripcion)}</p>` : ""}
+            ${when ? `<div class="meta"><span>${escapeHtml(when)}</span></div>` : `<div class="meta"><span>Fecha y horario a confirmar</span></div>`}
             <div class="card-actions">
               <button class="mini-btn" type="button" onclick="window.focusTourismPoint('${escapeAttr(item.id)}')">Ver en mapa</button>
-              <button class="mini-btn alt" type="button" onclick="window.openTourismDetail('${escapeAttr(item.id)}')">Ver ficha</button>
               ${item.maps_url ? `<a class="mini-btn" href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
+              <button class="mini-btn alt" type="button" onclick="window.openTourismDetail('${escapeAttr(item.id)}')">Ver ficha</button>
             </div>
           </div>
-        </article>
-      `).join("");
+        </article>`;
+      }).join("");
     }
 
     function updateSummary() {
