@@ -977,6 +977,103 @@
       .cards .mini-btn { width: 100%; }
     }
 
+
+    /* V10: fichas laterales limpias, con categoría/localidad y sin desbordes */
+    .cards {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+      padding: 14px !important;
+    }
+    .cards .result-card--simple {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(11,30,68,.10);
+      box-shadow: 0 8px 20px rgba(11,30,68,.06);
+    }
+    .cards .result-card__body {
+      padding: 14px !important;
+      gap: 8px !important;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-width: 0;
+    }
+    .card-tag {
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #eef4ff;
+      color: var(--azul-noche);
+      font-size: .79rem;
+      line-height: 1;
+      font-weight: 900;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .card-tag i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex: 0 0 auto;
+    }
+    .cards .result-card h3 {
+      margin-top: 0;
+      font-size: clamp(1.05rem, 1.1vw, 1.2rem) !important;
+      line-height: 1.08 !important;
+      overflow-wrap: anywhere;
+    }
+    .cards .meta {
+      font-size: .92rem !important;
+      line-height: 1.2;
+    }
+    .cards .meta span {
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      display: block !important;
+    }
+    .cards .card-actions {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px !important;
+      margin-top: 4px !important;
+    }
+    .cards .mini-btn {
+      width: 100%;
+      min-width: 0 !important;
+      flex: initial !important;
+      padding: 9px 8px !important;
+      font-size: .82rem !important;
+      line-height: 1.05 !important;
+      white-space: normal !important;
+      box-sizing: border-box;
+    }
+    @media (max-width: 1180px) {
+      .cards .card-actions { grid-template-columns: 1fr; }
+      .cards .mini-btn { justify-content: center; }
+    }
+    @media (max-width: 980px) {
+      .cards .card-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .panel-head { padding: 16px 14px 10px; }
+      .panel-head h2 { font-size: 1.55rem; }
+      .cards { padding: 12px !important; }
+      .cards .result-card__body { padding: 12px !important; }
+      .cards .card-actions { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -1400,7 +1497,7 @@
       const fechaRaw = source.fecha || source.Fecha || source["Fecha y hora (para los eventos)"] || source.fecha_evento || source.fechaHora;
       const horaRaw = source.hora || source.Hora || source["Hora:"] || source.horario || source.Horario;
       const fecha = formatDisplayDate(fechaRaw);
-      const hora = formatDisplayTime(horaRaw);
+      const hora = formatDisplayTime(horaRaw) || extractTimeFromDateTime(fechaRaw);
       const ubicacion = clean(source.ubicacion || source.Ubicación || source.Ubicacion || source["Ubicación del lugar o evento (INSERTAR EL LINK DE LA UBICACIÓN DE GOOGLE MAPS)"] || source.ubicacion_texto || source.direccion || source.Dirección || source.Direccion);
       const descripcion = clean(source.descripcion || source.Descripción || source["Descripción del evento o sitio (incluir si se cobra entrada)"] || source.description);
       const media = firstUrl(source.multimedia_url || source.media || source.imagen || source.imagen_url || source["Piezas gráficas y multimedia (fotos, flyers)"] || "");
@@ -1591,7 +1688,7 @@
         <div class="info-window">
           <h3>${escapeHtml(item.nombre)}</h3>
           <p class="iw-meta">${escapeHtml(item.localidad)} · ${escapeHtml(item.tipo)}</p>
-          ${item.fecha || item.hora ? `<p><strong>${escapeHtml([item.fecha, item.hora].filter(Boolean).join(" · "))}</strong></p>` : ""}
+          ${scheduleText(item) ? `<p><strong>${escapeHtml(scheduleText(item))}</strong></p>` : ""}
           ${item.descripcion ? `<p>${escapeHtml(shorten(item.descripcion, 130))}</p>` : ""}
           <div class="iw-actions">
             <a href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>
@@ -1606,12 +1703,16 @@
         return;
       }
       els.cards.innerHTML = state.filteredItems.map(item => {
-        const when = [item.fecha, item.hora].filter(Boolean).join(" · ");
+        const when = scheduleText(item);
         return `
         <article class="result-card result-card--simple">
           <div class="result-card__body">
+            <div class="card-tags" aria-label="Categoría y localidad">
+              ${item.categoria ? `<span class="card-tag card-tag--category"><i style="background:${escapeAttr(item.color)}"></i>${escapeHtml(item.categoria)}</span>` : ""}
+              ${item.localidad ? `<span class="card-tag">${escapeHtml(item.localidad)}</span>` : ""}
+            </div>
             <h3>${escapeHtml(item.nombre)}</h3>
-            ${when ? `<div class="meta"><span>${escapeHtml(when)}</span></div>` : `<div class="meta"><span>Fecha y horario a confirmar</span></div>`}
+            <div class="meta"><span>${escapeHtml(when || "Fecha y horario a confirmar")}</span></div>
             <div class="card-actions">
               <button class="mini-btn" type="button" onclick="window.focusTourismPoint('${escapeAttr(item.id)}')">Ver en mapa</button>
               ${item.maps_url ? `<a class="mini-btn" href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
@@ -1662,7 +1763,7 @@
         <h2 id="drawerTitle">${escapeHtml(item.nombre)}</h2>
         <div class="detail-list">
           <div class="detail-item"><small>Localidad</small><span>${escapeHtml(item.localidad)}</span></div>
-          ${item.fecha || item.hora ? `<div class="detail-item"><small>Fecha y horario</small><span>${escapeHtml([item.fecha, item.hora].filter(Boolean).join(" · "))}</span></div>` : ""}
+          ${scheduleText(item) ? `<div class="detail-item"><small>Fecha y horario</small><span>${escapeHtml(scheduleText(item))}</span></div>` : ""}
           ${item.ubicacion_mostrada ? `<div class="detail-item"><small>Ubicación</small><span>${escapeHtml(item.ubicacion_mostrada)}</span></div>` : ""}
         </div>
         ${item.descripcion ? `<div class="drawer__text">${escapeHtml(item.descripcion)}</div>` : ""}
@@ -1704,22 +1805,29 @@
     function formatDisplayDate(value) {
       const text = clean(value);
       if (!text) return "";
+
+      // Google Sheets guarda algunos campos de hora como fecha base 1899/1900.
+      // Eso no debe mostrarse como fecha al público.
+      if (isSheetTimeAnchor(text)) return "";
+
       const iso = text.match(/(20\d{2})[-/](\d{1,2})[-/](\d{1,2})/);
       if (iso) return `${pad2(iso[3])}/${pad2(iso[2])}/${iso[1]}`;
+
       const ar = text.match(/(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})/);
       if (ar) {
         let year = ar[3];
         if (year.length === 2) year = `20${year}`;
+        if (year === "1899" || year === "1900") return "";
         return `${pad2(ar[1])}/${pad2(ar[2])}/${year}`;
       }
+
       return text.replace(/\s+00:00:00$/, "");
     }
 
     function formatDisplayTime(value) {
       const text = clean(value);
       if (!text) return "";
-      const match = text.match(/(?:^|\s)(\d{1,2}):(\d{2})(?::\d{2})?$/);
-      if (match) return `${pad2(match[1])}:${match[2]} hs`;
+
       const decimal = Number(String(value).replace(',', '.'));
       if (Number.isFinite(decimal) && decimal >= 0 && decimal < 1) {
         const total = Math.round(decimal * 24 * 60);
@@ -1727,7 +1835,34 @@
         const mm = total % 60;
         return `${pad2(hh)}:${pad2(mm)} hs`;
       }
+
+      const match = text.match(/(?:T|\s|^)(\d{1,2}):(\d{2})(?::\d{2})?/);
+      if (match) {
+        const hh = Number(match[1]);
+        const mm = Number(match[2]);
+        if (Number.isFinite(hh) && Number.isFinite(mm) && hh >= 0 && hh < 24 && mm >= 0 && mm < 60) {
+          return `${pad2(hh)}:${pad2(mm)} hs`;
+        }
+      }
+
+      // Si llega una fecha base de Sheets sin hora legible, no se muestra nada.
+      if (isSheetTimeAnchor(text)) return "";
       return text;
+    }
+
+    function extractTimeFromDateTime(value) {
+      const time = formatDisplayTime(value);
+      if (!time) return "";
+      // Evita mostrar 00:00 hs cuando la planilla solo tiene una fecha sin hora.
+      return time === "00:00 hs" ? "" : time;
+    }
+
+    function isSheetTimeAnchor(value) {
+      return /(?:1899|1900)[-/](?:12|0?1)[-/]\d{1,2}/.test(clean(value));
+    }
+
+    function scheduleText(item) {
+      return [item.fecha, item.hora].filter(Boolean).join(" · ");
     }
 
     function pad2(value) {
