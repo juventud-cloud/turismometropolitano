@@ -403,11 +403,13 @@
     .explorer {
       display: grid;
       grid-template-columns: minmax(0, 1.45fr) minmax(360px, .75fr);
-      min-height: 680px;
+      height: clamp(560px, calc(100vh - 220px), 760px);
+      min-height: 560px;
     }
     .map-shell {
       position: relative;
-      min-height: 680px;
+      min-height: 0;
+      height: 100%;
       background: #dbe7f8;
     }
     #mapCanvas, .map-fallback {
@@ -473,7 +475,9 @@
     .list-panel {
       display: flex;
       flex-direction: column;
-      min-height: 680px;
+      min-height: 0;
+      height: 100%;
+      overflow: hidden;
       border-left: 1px solid rgba(11,30,68,.08);
       background: #ffffff;
     }
@@ -494,13 +498,22 @@
       font-weight: 700;
     }
     .cards {
-      padding: 18px;
-      overflow: auto;
+      flex: 1 1 auto;
+      min-height: 0;
+      padding: 22px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
       display: grid;
-      gap: 22px;
+      gap: 26px;
       align-content: start;
-      max-height: 610px;
+      max-height: none;
+      scroll-padding: 22px;
     }
+    .cards::-webkit-scrollbar { width: 10px; }
+    .cards::-webkit-scrollbar-track { background: #eef3fb; border-radius: 999px; }
+    .cards::-webkit-scrollbar-thumb { background: rgba(11,30,68,.25); border-radius: 999px; }
+    .cards::-webkit-scrollbar-thumb:hover { background: rgba(11,30,68,.38); }
     .result-card {
       border: 1px solid rgba(11,30,68,.09);
       border-radius: 22px;
@@ -508,6 +521,7 @@
       background: white;
       box-shadow: 0 12px 28px rgba(11,30,68,.08);
     }
+    .result-card:last-child { margin-bottom: 2px; }
     .result-card__image {
       height: 110px;
       background: linear-gradient(135deg, rgba(36,122,242,.9), rgba(214,74,172,.8), rgba(251,175,1,.9));
@@ -807,10 +821,10 @@
 
     @media (max-width: 1120px) {
       .filters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .explorer { grid-template-columns: 1fr; }
-      .list-panel { min-height: auto; border-left: 0; border-top: 1px solid rgba(11,30,68,.08); }
-      .cards { max-height: none; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .map-shell { min-height: 560px; }
+      .explorer { grid-template-columns: 1fr; height: auto; min-height: 0; }
+      .list-panel { height: min(680px, 76vh); min-height: 420px; border-left: 0; border-top: 1px solid rgba(11,30,68,.08); }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .map-shell { height: 560px; min-height: 560px; }
     }
     @media (max-width: 850px) {
       .topbar__nav {
@@ -846,10 +860,11 @@
       .hero__actions .btn { width: 100%; }
       .filters { grid-template-columns: 1fr; padding: 14px; }
       .clear-btn { width: 100%; }
-      .map-shell { min-height: 470px; }
+      .map-shell { height: 470px; min-height: 470px; }
       #mapCanvas, .map-fallback { min-height: 470px; }
       .legend { display: none; }
-      .cards { grid-template-columns: 1fr; padding: 14px; gap: 16px; }
+      .list-panel { height: min(620px, 78vh); min-height: 380px; }
+      .cards { grid-template-columns: 1fr; padding: 18px 14px; gap: 22px; }
       .stats { grid-template-columns: 1fr; }
       .stat-card { padding: 16px; }
       .drawer__panel { width: 100%; }
