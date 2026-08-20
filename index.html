@@ -8,7 +8,7 @@
   <meta name="description" content="Mapa Turístico Metropolitano: eventos, atractivos y experiencias para descubrir la Región Metropolitana de Córdoba." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --azul-noche: #0b1e44;
@@ -20,10 +20,10 @@
       --violeta: #9443ab;
       --magenta: #d64aac;
       --blanco: #ffffff;
-      --humo: #f5f7fb;
-      --gris: #d9e0ed;
-      --texto: #11213e;
-      --texto-suave: #667085;
+      --humo: #ffffff;
+      --gris: #ffffff;
+      --texto: #0b1e44;
+      --texto-suave: #0b1e44;
       --sombra: 0 24px 70px rgba(11, 30, 68, .18);
       --sombra-suave: 0 16px 36px rgba(11, 30, 68, .12);
       --radio-xl: 34px;
@@ -36,9 +36,9 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "Titillium Web", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--texto);
-      background: #eef3fb;
+      background: #ffffff;
       min-height: 100vh;
     }
     body.lock-scroll { overflow: hidden; }
@@ -52,7 +52,7 @@
       background:
         radial-gradient(circle at 8% 6%, rgba(36, 122, 242, .16), transparent 34%),
         radial-gradient(circle at 92% 12%, rgba(251, 175, 1, .13), transparent 29%),
-        linear-gradient(180deg, #f9fbff 0%, #eef3fb 100%);
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
     }
 
     .skip-link {
@@ -112,24 +112,6 @@
       object-fit: contain;
       display: block;
     }
-    .brand__logo.logo-fallback img { display: none; }
-    .brand__fallback-mark { display: none; position: absolute; width: 64px; height: 40px; }
-    .brand__logo.logo-fallback .brand__fallback-mark { display: block; }
-    .spring-arc {
-      position: absolute;
-      bottom: 2px;
-      width: 33px;
-      height: 33px;
-      border: 6px solid currentColor;
-      border-bottom-color: transparent;
-      border-radius: 50%;
-      transform: rotate(12deg);
-    }
-    .spring-arc:nth-child(1) { left: 0; color: var(--azul-vivo); }
-    .spring-arc:nth-child(2) { left: 10px; color: var(--azul-marca); }
-    .spring-arc:nth-child(3) { left: 20px; color: var(--magenta); }
-    .spring-arc:nth-child(4) { left: 30px; color: var(--naranja); }
-    .spring-arc:nth-child(5) { left: 40px; color: var(--amarillo); }
     .brand__text { min-width: 0; line-height: 1.02; }
     .brand__eyebrow {
       display: block;
@@ -140,7 +122,7 @@
     }
     .brand__title {
       display: block;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-weight: 800;
       font-size: 1.16rem;
       letter-spacing: .01em;
@@ -201,7 +183,7 @@
       background:
         radial-gradient(circle at 86% 25%, rgba(251, 175, 1, .22), transparent 26%),
         radial-gradient(circle at 76% 78%, rgba(214, 74, 172, .20), transparent 33%),
-        linear-gradient(135deg, #0b1e44 0%, #102a61 48%, #0b1e44 100%);
+        linear-gradient(135deg, #0b1e44 0%, #3c46bd 48%, #0b1e44 100%);
       box-shadow: var(--sombra);
       isolation: isolate;
     }
@@ -250,7 +232,7 @@
     .hero h1 {
       margin: 0;
       max-width: 850px;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: clamp(2.35rem, 6vw, 5.15rem);
       line-height: .94;
       letter-spacing: -.035em;
@@ -339,7 +321,7 @@
     }
     .stat-card strong {
       display: block;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: 2.05rem;
       line-height: 1;
       color: var(--azul-noche);
@@ -364,7 +346,7 @@
       grid-template-columns: minmax(260px, 1.3fr) repeat(4, minmax(160px, .8fr)) auto;
       gap: 10px;
       align-items: end;
-      background: linear-gradient(180deg, #ffffff, #f6f9ff);
+      background: linear-gradient(180deg, #ffffff, #ffffff);
       border-bottom: 1px solid rgba(11,30,68,.08);
     }
     .field { min-width: 0; }
@@ -410,14 +392,14 @@
       position: relative;
       min-height: 0;
       height: 100%;
-      background: #dbe7f8;
+      background: #ffffff;
     }
     #mapCanvas, .map-fallback {
       position: absolute;
       inset: 0;
       min-height: 520px;
     }
-    .map-fallback { display: none; background: #dbe7f8; }
+    .map-fallback { display: none; background: #ffffff; }
     .map-fallback.is-visible { display: block; }
     .map-fallback iframe {
       width: 100%;
@@ -487,7 +469,7 @@
     }
     .panel-head h2 {
       margin: 0;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: 1.9rem;
       line-height: 1;
       color: var(--azul-noche);
@@ -511,7 +493,7 @@
       scroll-padding: 14px;
     }
     .cards::-webkit-scrollbar { width: 10px; }
-    .cards::-webkit-scrollbar-track { background: #eef3fb; border-radius: 999px; }
+    .cards::-webkit-scrollbar-track { background: #ffffff; border-radius: 999px; }
     .cards::-webkit-scrollbar-thumb { background: rgba(11,30,68,.25); border-radius: 999px; }
     .cards::-webkit-scrollbar-thumb:hover { background: rgba(11,30,68,.38); }
     .result-card {
@@ -565,7 +547,7 @@
       gap: 6px;
       padding: 4px 8px;
       border-radius: 999px;
-      background: #eef4ff;
+      background: #ffffff;
       color: var(--azul-noche);
       font-weight: 900;
       font-size: .78rem;
@@ -574,7 +556,7 @@
     .tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--azul-vivo); display: inline-block; flex: 0 0 auto; }
     .result-card h3 {
       margin: 0;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: 1.1rem;
       line-height: 1.05;
       color: var(--azul-noche);
@@ -599,7 +581,7 @@
     }
     .desc {
       margin: 6px 0 0;
-      color: #344054;
+      color: #0b1e44;
       line-height: 1.25;
       font-size: .9rem;
       display: -webkit-box;
@@ -628,18 +610,18 @@
       justify-content: center;
       white-space: nowrap;
     }
-    .mini-btn.alt { background: #eef4ff; color: var(--azul-noche); }
+    .mini-btn.alt { background: #ffffff; color: var(--azul-noche); }
     .empty-state {
       margin: 18px;
       padding: 28px;
       text-align: center;
       border: 1px dashed rgba(11,30,68,.18);
       border-radius: 24px;
-      background: #f7faff;
+      background: #ffffff;
     }
     .empty-state h3 {
       margin: 0;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: 1.45rem;
       color: var(--azul-noche);
     }
@@ -648,11 +630,11 @@
     .info-window {
       max-width: 310px;
       color: var(--texto);
-      font-family: "Titillium Web", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
     }
     .info-window h3 {
       margin: 0;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: 1.28rem;
       line-height: 1.1;
       color: var(--azul-noche);
@@ -662,7 +644,7 @@
       font-size: .96rem;
       line-height: 1.28;
     }
-    .info-window .iw-meta { color: #5c667a; font-weight: 700; }
+    .info-window .iw-meta { color: #0b1e44; font-weight: 700; }
     .info-window .iw-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
     .info-window a {
       display: inline-flex;
@@ -673,7 +655,7 @@
       text-decoration: none;
       font-weight: 800;
     }
-    .info-window a.secondary { background: #eef4ff; color: var(--azul-noche); }
+    .info-window a.secondary { background: #ffffff; color: var(--azul-noche); }
 
     .guide {
       display: grid;
@@ -703,7 +685,7 @@
     }
     .guide-card h2, .public-card h2 {
       margin: 0;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1;
     }
@@ -731,12 +713,12 @@
       border-radius: 19px;
       color: white;
       background: linear-gradient(135deg, var(--azul-vivo), var(--violeta));
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: 1.5rem;
     }
     .step h3 {
       margin: 0;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: 1.32rem;
       color: var(--azul-noche);
       line-height: 1.05;
@@ -798,14 +780,14 @@
     .drawer__body { padding: 24px; }
     .drawer__body h2 {
       margin: 0;
-      font-family: "Baloo 2", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       font-size: 2rem;
       line-height: 1.02;
       color: var(--azul-noche);
     }
     .drawer__text {
       margin-top: 14px;
-      color: #344054;
+      color: #0b1e44;
       line-height: 1.45;
       font-size: 1.03rem;
       white-space: pre-line;
@@ -826,7 +808,7 @@
       gap: 2px;
       padding: 12px 14px;
       border-radius: 18px;
-      background: #f6f9ff;
+      background: #ffffff;
       border: 1px solid rgba(11,30,68,.07);
     }
     .detail-item small { color: var(--texto-suave); font-weight: 900; text-transform: uppercase; letter-spacing: .07em; }
@@ -1012,7 +994,7 @@
       min-width: 0;
       padding: 5px 9px;
       border-radius: 999px;
-      background: #eef4ff;
+      background: #ffffff;
       color: var(--azul-noche);
       font-size: .79rem;
       line-height: 1;
@@ -1074,6 +1056,386 @@
       .cards .card-actions { grid-template-columns: 1fr; }
     }
 
+  
+    /* ===== Nuestras localidades ===== */
+    .section-kicker {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px;
+      color: var(--azul-vivo); font-weight: 900; font-size: .82rem;
+      text-transform: uppercase; letter-spacing: .08em;
+    }
+    .localities-shell {
+      border-radius: 28px; background: #fff; box-shadow: var(--sombra);
+      border: 1px solid rgba(11,30,68,.08); padding: clamp(22px, 3vw, 36px);
+      overflow: hidden; position: relative;
+    }
+    .localities-shell::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+      background: linear-gradient(90deg, var(--azul-vivo), var(--violeta), var(--magenta), var(--naranja), var(--amarillo));
+    }
+    .localities-head {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px;
+      align-items: end; margin-bottom: 20px;
+    }
+    .localities-head h2 {
+      margin: 0; font-family: "Manrope", system-ui, sans-serif; color: var(--azul-noche);
+      font-size: clamp(2rem, 3vw, 2.7rem); line-height: 1;
+    }
+    .localities-head p { max-width: 760px; margin: 10px 0 0; color: var(--texto-suave); font-size: 1.04rem; line-height: 1.45; }
+    .localities-count { padding: 10px 14px; border-radius: 999px; background: #ffffff; color: var(--azul-noche); font-weight: 900; white-space: nowrap; }
+    .localities-toolbar { max-width: 460px; margin-bottom: 22px; }
+    .localities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .locality-card {
+      border: 1px solid rgba(11,30,68,.09); border-radius: 22px; background: #fff;
+      box-shadow: 0 10px 28px rgba(11,30,68,.07); overflow: hidden;
+      display: grid; grid-template-columns: 7px minmax(0, 1fr); min-width: 0;
+    }
+    .locality-card__accent { background: linear-gradient(180deg, var(--azul-vivo), var(--violeta), var(--magenta), var(--naranja)); }
+    .locality-card__body { min-width: 0; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .locality-card__eyebrow { color: var(--texto-suave); font-size: .76rem; font-weight: 900; text-transform: uppercase; letter-spacing: .07em; }
+    .locality-card h3 { margin: 0; color: var(--azul-noche); font-family: "Manrope", system-ui, sans-serif; font-size: 1.55rem; line-height: 1; }
+    .locality-card p { margin: 0; color: #0b1e44; line-height: 1.42; font-size: .97rem; }
+    .locality-strength-preview, .service-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .locality-strength-preview span, .service-chips span {
+      display: inline-flex; align-items: center; padding: 7px 10px; border-radius: 999px;
+      background: #ffffff; color: var(--azul-noche); font-weight: 800; font-size: .8rem; line-height: 1.15;
+    }
+    .locality-more {
+      margin-top: auto; align-self: flex-start; border: 0; border-radius: 12px;
+      background: var(--azul-noche); color: #fff; font: inherit; font-weight: 900;
+      padding: 10px 13px; cursor: pointer;
+    }
+    .locality-more:hover, .locality-more:focus-visible { background: var(--azul-vivo); outline: none; }
+    .localities-empty { grid-column: 1 / -1; border-radius: 18px; background: #ffffff; padding: 30px; text-align: center; color: var(--texto-suave); }
+    .localities-empty h3 { margin: 0 0 4px; color: var(--azul-noche); font-family: "Manrope", system-ui, sans-serif; font-size: 1.35rem; }
+    .drawer__hero.is-hidden { display: none; }
+    .drawer__hero.image-failed { min-height: 120px; }
+    .drawer-section { margin-top: 22px; }
+    .drawer-section h3 { margin: 0 0 8px; color: var(--azul-noche); font-family: "Manrope", system-ui, sans-serif; font-size: 1.2rem; line-height: 1.1; }
+    .service-chips--large span { font-size: .9rem; padding: 9px 12px; }
+    .sr-only {
+      position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important;
+      margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important;
+      white-space: nowrap !important; border: 0 !important;
+    }
+    @media (max-width: 1120px) { .localities-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 720px) {
+      .localities-head { grid-template-columns: 1fr; align-items: start; gap: 12px; }
+      .localities-count { justify-self: start; }
+      .localities-toolbar { max-width: none; }
+      .localities-grid { grid-template-columns: 1fr; }
+      .locality-card__body { padding: 17px; }
+    }
+
+    /* Fichas del panel lateral: compactas y responsive */
+    .cards .result-card--simple { width: 100%; overflow: hidden; }
+    .cards .result-card__body { min-width: 0; }
+    .cards .card-tags { display: flex; flex-wrap: wrap; gap: 7px; min-width: 0; }
+    .cards .card-tag { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+    .cards .meta span { white-space: normal !important; overflow: visible !important; }
+    @media (max-width: 560px) { .cards .card-actions { grid-template-columns: 1fr !important; } }
+
+  
+
+    /* =========================================================
+       V12 · Dirección editorial turística + paleta institucional
+       ========================================================= */
+    :root {
+      --azul-noche: #0B1E44;
+      --azul-marca: #3C46BD;
+      --azul-vivo: #247AF2;
+      --amarillo: #FBAF01;
+      --naranja: #F15C27;
+      --rojo: #DD3041;
+      --violeta: #9443AB;
+      --magenta: #D64AAC;
+      --blanco: #FFFFFF;
+      --humo: #FFFFFF;
+      --gris: rgba(11,30,68,.16);
+      --texto: #0B1E44;
+      --texto-suave: rgba(11,30,68,.64);
+      --sombra: 0 24px 60px rgba(11,30,68,.12);
+      --sombra-suave: 0 14px 34px rgba(11,30,68,.09);
+    }
+
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--azul-noche);
+      background: var(--blanco);
+    }
+    .page { background: var(--blanco); }
+
+    .topbar {
+      background: rgba(11,30,68,.98);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      box-shadow: none;
+    }
+    .topbar__inner { min-height: 76px; }
+    .brand { gap: 18px; }
+    .brand__logo--official { width: 218px; height: 50px; }
+    .brand__eyebrow { color: rgba(255,255,255,.68); font-weight: 700; }
+    .brand__title { font-family: "Manrope", system-ui, sans-serif; font-weight: 800; }
+    .nav-link { font-weight: 700; letter-spacing: -.01em; }
+    .nav-cta {
+      background: var(--blanco);
+      color: var(--azul-noche);
+      border: 1px solid var(--blanco);
+      box-shadow: none;
+    }
+    .nav-cta:hover, .nav-cta:focus-visible { background: var(--amarillo); border-color: var(--amarillo); }
+
+    .hero { padding-top: clamp(34px, 5vw, 72px); padding-bottom: 22px; }
+    .hero-card {
+      min-height: clamp(500px, 60vh, 650px);
+      display: grid;
+      align-items: end;
+      position: relative;
+      padding: clamp(34px, 6vw, 78px);
+      border-radius: 42px;
+      background: var(--azul-noche);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 26px 70px rgba(11,30,68,.18);
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: clamp(310px, 40vw, 560px);
+      height: clamp(310px, 40vw, 560px);
+      right: clamp(-180px, -8vw, -70px);
+      top: 50%;
+      transform: translateY(-50%);
+      border: 2px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      background: transparent;
+      box-shadow:
+        0 0 0 60px rgba(60,70,189,.18),
+        0 0 0 120px rgba(214,74,172,.10),
+        0 0 0 180px rgba(241,92,39,.06);
+      opacity: 1;
+      z-index: 0;
+    }
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      left: clamp(34px, 6vw, 78px);
+      right: clamp(34px, 6vw, 78px);
+      bottom: 26px;
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--azul-vivo), var(--azul-marca), var(--violeta), var(--magenta), var(--rojo), var(--naranja), var(--amarillo));
+      opacity: 1;
+    }
+    .hero__content { position: relative; z-index: 3; max-width: 900px; }
+    .hero__kicker {
+      padding: 0;
+      background: transparent;
+      border: 0;
+      color: rgba(255,255,255,.76);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+    .hero__kicker span:first-child { background: var(--amarillo); box-shadow: none; }
+    .hero h1 {
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: clamp(3rem, 7.2vw, 6.6rem);
+      line-height: .92;
+      letter-spacing: -.06em;
+      max-width: 980px;
+      text-wrap: balance;
+    }
+    .editorial-accent,
+    .hero__editorial em {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: -.025em;
+    }
+    .editorial-accent { color: var(--amarillo); white-space: nowrap; }
+    .hero > .hero-card p { max-width: 780px; }
+    .hero__editorial {
+      font-size: clamp(1.18rem, 2vw, 1.5rem) !important;
+      color: rgba(255,255,255,.94) !important;
+      margin-top: 10px !important;
+    }
+    .hero__editorial em:first-child { color: var(--magenta); }
+    .hero__editorial em:last-child { color: var(--amarillo); }
+    .hero__actions { margin-top: 30px; }
+    .hero .btn-primary {
+      background: var(--blanco);
+      color: var(--azul-noche);
+      box-shadow: none;
+    }
+    .hero .btn-primary:hover { background: var(--amarillo); }
+    .hero .btn-secondary {
+      background: transparent;
+      color: var(--blanco);
+      border: 1px solid rgba(255,255,255,.34);
+    }
+    .hero .btn-secondary:hover { background: rgba(255,255,255,.10); }
+    .hero-route { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+    .hero-route__line {
+      position: absolute;
+      width: 36%;
+      height: 34%;
+      right: 8%;
+      top: 18%;
+      border: 2px dashed rgba(255,255,255,.36);
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      transform: rotate(14deg);
+    }
+    .hero-route__point { position: absolute; width: 15px; height: 15px; border-radius: 50%; border: 4px solid var(--blanco); box-shadow: 0 0 0 5px rgba(255,255,255,.10); }
+    .hero-route__point--a { right: 14%; top: 19%; background: var(--amarillo); }
+    .hero-route__point--b { right: 29%; top: 34%; background: var(--magenta); }
+    .hero-route__point--c { right: 11%; top: 49%; background: var(--azul-vivo); }
+
+    .chips { margin-top: 22px; }
+    .chip { background: transparent; border-color: rgba(255,255,255,.18); font-weight: 700; }
+
+    .section { padding-top: 30px; padding-bottom: 30px; }
+    .stats { gap: 12px; }
+    .stat-card {
+      background: var(--blanco);
+      border: 1px solid rgba(11,30,68,.12);
+      border-top: 4px solid var(--azul-vivo);
+      box-shadow: none;
+      border-radius: 18px;
+    }
+    .stat-card:nth-child(2) { border-top-color: var(--violeta); }
+    .stat-card:nth-child(3) { border-top-color: var(--naranja); }
+    .stat-card:nth-child(4) { border-top-color: var(--magenta); }
+    .stat-card strong { font-family: "Manrope", system-ui, sans-serif; font-weight: 800; }
+
+    .main-card {
+      border: 1px solid rgba(11,30,68,.14);
+      border-radius: 30px;
+      box-shadow: none;
+    }
+    .filters {
+      background: var(--blanco);
+      border-bottom: 1px solid rgba(11,30,68,.12);
+      padding: 20px;
+    }
+    .field label { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+    .control {
+      border-radius: 999px;
+      border-color: rgba(11,30,68,.18);
+      background: var(--blanco);
+      color: var(--azul-noche);
+      padding-left: 16px;
+    }
+    .control:focus { border-color: var(--azul-vivo); box-shadow: 0 0 0 4px rgba(36,122,242,.14); }
+    .clear-btn { border-radius: 999px; background: var(--azul-noche); }
+    .clear-btn:hover { background: var(--azul-marca); }
+
+    .map-shell, .map-fallback { background: var(--blanco); }
+    .map-badge { border: 1px solid rgba(11,30,68,.10); box-shadow: var(--sombra-suave); }
+    .legend span { border: 1px solid rgba(11,30,68,.10); box-shadow: none; }
+    .pulse-dot { background: var(--naranja); box-shadow: 0 0 0 6px rgba(241,92,39,.14); }
+    .list-panel { background: var(--blanco); border-left-color: rgba(11,30,68,.12); }
+    .panel-head { padding: 24px 22px 16px; border-bottom-color: rgba(11,30,68,.10); }
+    .panel-head h2 { font-family: "Manrope", system-ui, sans-serif; font-size: 1.75rem; letter-spacing: -.035em; }
+    .panel-head p { color: rgba(11,30,68,.62); }
+    .cards { padding: 16px; gap: 12px; scrollbar-color: rgba(11,30,68,.30) rgba(11,30,68,.06); }
+    .cards::-webkit-scrollbar-track { background: rgba(11,30,68,.06); }
+    .result-card {
+      background: var(--blanco);
+      border: 1px solid rgba(11,30,68,.14);
+      border-radius: 20px;
+      box-shadow: none;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .result-card:hover { transform: translateY(-2px); border-color: rgba(36,122,242,.45); box-shadow: 0 12px 30px rgba(11,30,68,.08); }
+    .result-card h3 { font-family: "Manrope", system-ui, sans-serif; letter-spacing: -.025em; }
+    .card-tag, .tag,
+    .locality-strength-preview span, .service-chips span {
+      background: var(--blanco);
+      border: 1px solid rgba(11,30,68,.14);
+      color: var(--azul-noche);
+    }
+    .mini-btn { background: var(--azul-noche); }
+    .mini-btn:hover { background: var(--azul-marca); }
+    .mini-btn.alt { background: var(--blanco); color: var(--azul-noche); border: 1px solid rgba(11,30,68,.16); }
+    .empty-state { background: var(--blanco); border-color: rgba(11,30,68,.22); }
+
+    .localities-shell {
+      background: var(--azul-noche);
+      color: var(--blanco);
+      border: 0;
+      box-shadow: none;
+      border-radius: 34px;
+      padding: clamp(28px, 4vw, 48px);
+    }
+    .localities-shell::before { height: 6px; background: linear-gradient(90deg, var(--azul-vivo), var(--azul-marca), var(--violeta), var(--magenta), var(--rojo), var(--naranja), var(--amarillo)); }
+    .section-kicker { color: var(--amarillo); }
+    .localities-head h2 { font-family: "Manrope", system-ui, sans-serif; color: var(--blanco); font-size: clamp(2.3rem, 4vw, 4rem); letter-spacing: -.05em; }
+    .localities-head p { color: rgba(255,255,255,.76); }
+    .localities-count { background: rgba(255,255,255,.10); color: var(--blanco); border: 1px solid rgba(255,255,255,.18); }
+    .localities-toolbar .control { background: var(--blanco); }
+    .localities-grid { gap: 14px; }
+    .locality-card { background: var(--blanco); border: 0; box-shadow: none; border-radius: 20px; }
+    .locality-card h3 { font-family: "Manrope", system-ui, sans-serif; letter-spacing: -.035em; }
+    .locality-card p { color: rgba(11,30,68,.72); }
+    .locality-card__eyebrow { color: rgba(11,30,68,.58); }
+    .locality-more { border-radius: 999px; }
+    .localities-empty { background: rgba(255,255,255,.08); color: rgba(255,255,255,.80); border: 1px solid rgba(255,255,255,.14); }
+    .localities-empty h3 { color: var(--blanco); }
+
+    .guide { gap: 14px; }
+    .guide-card { background: var(--azul-marca); border-radius: 30px; box-shadow: none; }
+    .guide-card::after { background: linear-gradient(90deg, var(--azul-vivo), var(--magenta), var(--naranja), var(--amarillo)); }
+    .guide-card h2, .public-card h2 { font-family: "Manrope", system-ui, sans-serif; letter-spacing: -.045em; }
+    .step { border-color: rgba(11,30,68,.12); box-shadow: none; }
+    .step strong { font-family: "Manrope", system-ui, sans-serif; background: var(--azul-noche); }
+    .step h3 { font-family: "Manrope", system-ui, sans-serif; }
+
+    .drawer__panel { background: var(--blanco); }
+    .drawer__hero { background: linear-gradient(135deg, var(--azul-vivo), var(--violeta), var(--magenta), var(--naranja), var(--amarillo)); }
+    .drawer__body h2, .drawer-section h3 { font-family: "Manrope", system-ui, sans-serif; }
+    .detail-item { background: var(--blanco); border-color: rgba(11,30,68,.12); }
+    .btn-primary { background: var(--azul-noche); color: var(--blanco); box-shadow: none; }
+    .btn-primary:hover { background: var(--azul-marca); }
+    .btn-light { background: var(--blanco); border-color: rgba(11,30,68,.16); }
+
+    .footer { background: var(--azul-noche); margin-top: 28px; }
+    .footer__inner { padding-top: 34px; padding-bottom: 34px; }
+
+    @media (max-width: 1120px) {
+      .hero-card { min-height: 520px; }
+      .hero-route__line, .hero-route__point { opacity: .55; }
+    }
+    @media (max-width: 850px) {
+      .topbar__nav { background: var(--azul-noche); border: 1px solid rgba(255,255,255,.12); }
+      .hero-card { min-height: 500px; border-radius: 30px; }
+      .hero-card::before { right: -230px; opacity: .8; }
+      .hero-route { opacity: .40; }
+      .hero h1 { font-size: clamp(3rem, 11vw, 5.4rem); }
+    }
+    @media (max-width: 680px) {
+      .topbar__inner { min-height: 66px; }
+      .brand__logo--official { width: 166px; height: 36px; }
+      .brand__text { display: none; }
+      .hero { padding-top: 18px; }
+      .hero-card { min-height: 540px; padding: 30px 24px 44px; border-radius: 26px; }
+      .hero-card::after { display: block; left: 24px; right: 24px; bottom: 20px; }
+      .hero-card::before { width: 350px; height: 350px; right: -260px; box-shadow: 0 0 0 50px rgba(60,70,189,.16), 0 0 0 100px rgba(214,74,172,.09); }
+      .hero-route { display: none; }
+      .hero h1 { font-size: clamp(3.1rem, 15vw, 4.9rem); line-height: .88; }
+      .editorial-accent { white-space: normal; }
+      .hero p { font-size: 1rem; }
+      .hero__editorial { font-size: 1.15rem !important; }
+      .hero__actions .btn { width: 100%; }
+      .chips { gap: 7px; }
+      .chip { font-size: .82rem; padding: 7px 10px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .filters { padding: 14px; }
+      .main-card { border-radius: 22px; }
+      .localities-shell { border-radius: 26px; padding: 26px 18px; }
+      .localities-head h2 { font-size: clamp(2.25rem, 11vw, 3.5rem); }
+    }
+
   </style>
 </head>
 <body>
@@ -1094,6 +1456,7 @@
         <nav class="topbar__nav" id="mainNav" aria-label="Navegación principal">
           <a class="nav-link" href="#mapa">Mapa</a>
           <a class="nav-link" href="#agenda">Agenda</a>
+          <a class="nav-link" href="#localidades">Nuestras localidades</a>
           <a class="nav-link" href="#como-usarlo">Cómo usarlo</a>
           <a class="nav-cta" href="#mapa">Explorar</a>
         </nav>
@@ -1103,18 +1466,27 @@
     <main id="inicio">
       <section class="hero" aria-labelledby="heroTitle">
         <div class="hero-card">
-          <div class="hero__kicker"><span></span> Región Metropolitana de Córdoba</div>
-          <h1 id="heroTitle">Mapa Turístico Metropolitano</h1>
-          <p>Descubrí eventos, atractivos, sitios naturales, propuestas culturales y experiencias para recorrer las localidades metropolitanas.</p>
-          <div class="hero__actions">
-            <a class="btn btn-primary" href="#mapa">Explorar el mapa</a>
-            <a class="btn btn-secondary" href="#agenda">Ver propuestas</a>
+          <div class="hero-route" aria-hidden="true">
+            <span class="hero-route__line"></span>
+            <span class="hero-route__point hero-route__point--a"></span>
+            <span class="hero-route__point hero-route__point--b"></span>
+            <span class="hero-route__point hero-route__point--c"></span>
           </div>
-          <div class="chips" aria-label="Tipos de propuestas">
-            <span class="chip"><i></i> Eventos</span>
-            <span class="chip"><i></i> Naturaleza</span>
-            <span class="chip"><i></i> Cultura</span>
-            <span class="chip"><i></i> Patrimonio</span>
+          <div class="hero__content">
+            <div class="hero__kicker"><span></span> Mapa Turístico Metropolitano</div>
+            <h1 id="heroTitle">Descubrí la región <em class="editorial-accent">más cerca</em> de vos.</h1>
+            <p>Eventos de este fin de semana, atractivos permanentes y experiencias para recorrer la Región Metropolitana de Córdoba.</p>
+            <p class="hero__editorial"><em>Salí de la rutina.</em> Tu próximo plan empieza <em>acá</em>.</p>
+            <div class="hero__actions">
+              <a class="btn btn-primary" href="#mapa">Ver este fin de semana</a>
+              <a class="btn btn-secondary" href="#localidades">Conocer las localidades</a>
+            </div>
+            <div class="chips" aria-label="Tipos de propuestas">
+              <span class="chip"><i></i> Eventos</span>
+              <span class="chip"><i></i> Naturaleza</span>
+              <span class="chip"><i></i> Cultura</span>
+              <span class="chip"><i></i> Patrimonio</span>
+            </div>
           </div>
         </div>
       </section>
@@ -1178,10 +1550,33 @@
             <aside class="list-panel" id="agenda" aria-labelledby="mapTitle">
               <div class="panel-head">
                 <h2 id="mapTitle">Agenda y atractivos</h2>
-                <p id="resultsSummary">Buscá una propuesta o elegí un punto del mapa.</p>
+                <p id="resultsSummary">Cargando los eventos de este fin de semana...</p>
               </div>
               <div class="cards" id="cardsContainer"></div>
             </aside>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section localities-section" id="localidades" aria-labelledby="localitiesTitle">
+        <div class="localities-shell">
+          <div class="localities-head">
+            <div>
+              <span class="section-kicker">Nuestras localidades</span>
+              <h2 id="localitiesTitle">Conocé la identidad turística de la región</h2>
+              <p>Cada localidad tiene una historia, un paisaje y fortalezas propias. Explorá qué la distingue y qué experiencias ofrece.</p>
+            </div>
+            <div class="localities-count" id="localitiesCount">Cargando localidades...</div>
+          </div>
+
+          <div class="localities-toolbar">
+            <label class="sr-only" for="localitySearch">Buscar localidad</label>
+            <input class="control" id="localitySearch" type="search" placeholder="Buscar una localidad" autocomplete="off">
+          </div>
+
+          <div class="localities-grid" id="localitiesGrid" aria-live="polite">
+            <div class="localities-empty"><p>Cargando información...</p></div>
           </div>
         </div>
       </section>
@@ -1234,806 +1629,845 @@
   </div>
 
   <script>
-    const CONFIG = {
-      DATA_ENDPOINT: "https://script.google.com/macros/s/AKfycbzRNMtR-jWnQyF0ScxLBA3dassgoMj7zoGUw6r7P7xTP647FGY75eaxW0P_XpiOcxz9/exec",
-      GOOGLE_MAPS_API_KEY: "AIzaSyCHeESj-vYBqGuoQXHDU_pIugENZ43WXmQ",
-      DEFAULT_CENTER: { lat: -31.4167, lng: -64.1833 },
-      DEFAULT_ZOOM: 9,
-      FORM_URL: ""
-    };
+const CONFIG = {
+  DATA_ENDPOINT: "https://script.google.com/macros/s/AKfycbzRNMtR-jWnQyF0ScxLBA3dassgoMj7zoGUw6r7P7xTP647FGY75eaxW0P_XpiOcxz9/exec",
+  LOCALITIES_ENDPOINT: "https://script.google.com/macros/s/AKfycbw7l97SHd1aujeThhkXfsWnQDNFLFgh1Hch86StD2QFzO3AE1SrpRYYM3ze0UQnAInj/exec",
+  GOOGLE_MAPS_API_KEY: "AIzaSyCHeESj-vYBqGuoQXHDU_pIugENZ43WXmQ",
+  DEFAULT_CENTER: { lat: -31.4167, lng: -64.1833 },
+  DEFAULT_ZOOM: 9
+};
 
-    const LOCALIDAD_COORDS = {
-      "agua de oro": { lat: -31.067, lng: -64.300 },
-      "bouwer": { lat: -31.557, lng: -64.218 },
-      "colonia tirolesa": { lat: -31.266, lng: -64.064 },
-      "cordoba": { lat: -31.420, lng: -64.188 },
-      "córdoba": { lat: -31.420, lng: -64.188 },
-      "despeñaderos": { lat: -31.817, lng: -64.296 },
-      "el manzano": { lat: -31.087, lng: -64.296 },
-      "estacion juarez celman": { lat: -31.279, lng: -64.172 },
-      "estación juárez celman": { lat: -31.279, lng: -64.172 },
-      "la calera": { lat: -31.343, lng: -64.336 },
-      "la granja": { lat: -31.010, lng: -64.268 },
-      "los cedros": { lat: -31.545, lng: -64.287 },
-      "lozada": { lat: -31.650, lng: -64.094 },
-      "malagueño": { lat: -31.465, lng: -64.358 },
-      "malvinas argentinas": { lat: -31.382, lng: -64.055 },
-      "mendiolaza": { lat: -31.267, lng: -64.300 },
-      "mi granja": { lat: -31.352, lng: -64.050 },
-      "monte cristo": { lat: -31.344, lng: -63.944 },
-      "piquillín": { lat: -31.333, lng: -63.756 },
-      "rafael garcía": { lat: -31.646, lng: -64.262 },
-      "rio ceballos": { lat: -31.164, lng: -64.326 },
-      "río ceballos": { lat: -31.164, lng: -64.326 },
-      "rio primero": { lat: -31.333, lng: -63.620 },
-      "río primero": { lat: -31.333, lng: -63.620 },
-      "saldán": { lat: -31.312, lng: -64.305 },
-      "salsipuedes": { lat: -31.132, lng: -64.296 },
-      "toledo": { lat: -31.556, lng: -64.009 },
-      "unquillo": { lat: -31.230, lng: -64.315 },
-      "villa allende": { lat: -31.295, lng: -64.295 },
-      "villa cerro azul": { lat: -31.080, lng: -64.310 },
-      "villa parque santa ana": { lat: -31.581, lng: -64.353 }
-    };
+const LOCALIDAD_COORDS = {
+  "agua de oro": { lat: -31.067, lng: -64.300 },
+  "bouwer": { lat: -31.557, lng: -64.218 },
+  "colonia tirolesa": { lat: -31.266, lng: -64.064 },
+  "cordoba": { lat: -31.420, lng: -64.188 },
+  "despenaderos": { lat: -31.817, lng: -64.296 },
+  "el manzano": { lat: -31.087, lng: -64.296 },
+  "estacion juarez celman": { lat: -31.279, lng: -64.172 },
+  "la calera": { lat: -31.343, lng: -64.336 },
+  "la granja": { lat: -31.010, lng: -64.268 },
+  "los cedros": { lat: -31.545, lng: -64.287 },
+  "lozada": { lat: -31.650, lng: -64.094 },
+  "malagueno": { lat: -31.465, lng: -64.358 },
+  "malvinas argentinas": { lat: -31.382, lng: -64.055 },
+  "mendiolaza": { lat: -31.267, lng: -64.300 },
+  "mi granja": { lat: -31.352, lng: -64.050 },
+  "monte cristo": { lat: -31.344, lng: -63.944 },
+  "piquillin": { lat: -31.333, lng: -63.756 },
+  "rafael garcia": { lat: -31.646, lng: -64.262 },
+  "rio ceballos": { lat: -31.164, lng: -64.326 },
+  "rio primero": { lat: -31.333, lng: -63.620 },
+  "saldan": { lat: -31.312, lng: -64.305 },
+  "salsipuedes": { lat: -31.132, lng: -64.296 },
+  "toledo": { lat: -31.556, lng: -64.009 },
+  "unquillo": { lat: -31.230, lng: -64.315 },
+  "villa allende": { lat: -31.295, lng: -64.295 },
+  "villa cerro azul": { lat: -31.080, lng: -64.310 },
+  "villa parque santa ana": { lat: -31.581, lng: -64.353 }
+};
 
-    const SAMPLE_DATA = [
-      {
-        id: "demo-1",
-        localidad: "Toledo",
-        categoria: "Eventos",
-        tipo: "Feria",
-        nombre: "Feria de artesanos y eco canje",
-        fecha: "7 de diciembre",
-        hora: "15:00",
-        ubicacion: "Paseo De Luca, Plaza Manuel Belgrano, Toledo",
-        descripcion: "Feria de artesanos con propuesta de eco canje, pensada para promover la separación de residuos, el reciclaje y el encuentro comunitario.",
-        maps_url: "https://www.google.com/maps/search/?api=1&query=Paseo%20De%20Luca%20Plaza%20Manuel%20Belgrano%20Toledo%20Cordoba",
-        web_instagram: "https://www.instagram.com/todosunidosportoledo",
-        lat: -31.556,
-        lng: -64.009
-      },
-      {
-        id: "demo-2",
-        localidad: "Río Ceballos",
-        categoria: "Eventos",
-        tipo: "Deporte/Recreación",
-        nombre: "Expo Río Ceballos: encuentro de autos y motos",
-        fecha: "13 de julio",
-        hora: "11:00",
-        ubicacion: "Polideportivo Jorge Newbery, Río Ceballos",
-        descripcion: "Encuentro y exposición de autos, motos, autos clásicos, modificados y car audio. Entrada gratuita.",
-        maps_url: "https://www.google.com/maps/search/?api=1&query=Polideportivo%20Jorge%20Newbery%20Rio%20Ceballos%20Cordoba",
-        web_instagram: "https://www.instagram.com/turismorioceballos",
-        lat: -31.164,
-        lng: -64.326
-      },
-      {
-        id: "demo-3",
-        localidad: "Río Ceballos",
-        categoria: "Eventos",
-        tipo: "Naturaleza",
-        nombre: "Senderos del diálogo y astroturismo solar",
-        fecha: "13 de julio",
-        hora: "10:00",
-        ubicacion: "Puente San José y Ex Parador La Estancita, Río Ceballos",
-        descripcion: "Caminata consciente por senderos naturales y observación astronómica del Sol con telescopios y filtros especiales. Actividad con inscripción previa.",
-        maps_url: "https://www.google.com/maps/search/?api=1&query=Puente%20San%20Jose%20Rio%20Ceballos%20Cordoba",
-        web_instagram: "https://www.instagram.com/turismorioceballos",
-        lat: -31.156,
-        lng: -64.323
-      },
-      {
-        id: "demo-4",
-        localidad: "Agua de Oro",
-        categoria: "Eventos",
-        tipo: "Festival/Cultura",
-        nombre: "Encuentro criollo",
-        fecha: "12 y 13 de julio",
-        hora: "11:00",
-        ubicacion: "Club Social y Deportivo Agua de Oro",
-        descripcion: "Destrezas gauchas, danzas y música en vivo. Una propuesta para disfrutar tradiciones locales en comunidad.",
-        maps_url: "https://www.google.com/maps/search/?api=1&query=Club%20Social%20y%20Deportivo%20Agua%20de%20Oro%20Cordoba",
-        web_instagram: "https://www.instagram.com/culturayturismoaguadeoro",
-        lat: -31.067,
-        lng: -64.300
-      },
-      {
-        id: "demo-5",
-        localidad: "Estación Juárez Celman",
-        categoria: "Eventos",
-        tipo: "Festival/Cultura",
-        nombre: "Sede Festival Pensar con Humor",
-        fecha: "Junio",
-        hora: "18:00",
-        ubicacion: "CIC Cultura, Av. Cortázar 50, Estación Juárez Celman",
-        descripcion: "Comedia para adultos en el marco del Festival Pensar con Humor.",
-        maps_url: "https://www.google.com/maps/search/?api=1&query=CIC%20Cultura%20Av%20Cortazar%2050%20Estacion%20Juarez%20Celman%20Cordoba",
-        web_instagram: "https://www.juarezcelman.gob.ar",
-        lat: -31.279,
-        lng: -64.172
-      }
-    ];
+const state = {
+  allItems: [],
+  filteredItems: [],
+  localities: [],
+  filteredLocalities: [],
+  map: null,
+  infoWindow: null,
+  markers: [],
+  markersById: new Map(),
+  googleReady: false,
+  itemsLoadError: false,
+  localitiesLoadError: false,
+  initialWeekendApplied: false
+};
 
-    const state = {
-      allItems: [],
-      filteredItems: [],
-      map: null,
-      infoWindow: null,
-      markers: [],
-      markersById: new Map(),
-      googleReady: false
-    };
+const els = {
+  menuToggle: document.getElementById("menuToggle"),
+  mainNav: document.getElementById("mainNav"),
+  search: document.getElementById("searchInput"),
+  localidad: document.getElementById("localidadSelect"),
+  categoria: document.getElementById("categoriaSelect"),
+  tipo: document.getElementById("tipoSelect"),
+  fecha: document.getElementById("fechaSelect"),
+  clear: document.getElementById("clearFilters"),
+  cards: document.getElementById("cardsContainer"),
+  summary: document.getElementById("resultsSummary"),
+  badge: document.getElementById("mapBadgeText"),
+  fallback: document.getElementById("mapFallback"),
+  mapCanvas: document.getElementById("mapCanvas"),
+  drawer: document.getElementById("detailDrawer"),
+  drawerHero: document.getElementById("drawerHero"),
+  drawerBody: document.getElementById("drawerBody"),
+  statTotal: document.getElementById("statTotal"),
+  statLocalidades: document.getElementById("statLocalidades"),
+  statEventos: document.getElementById("statEventos"),
+  statAtractivos: document.getElementById("statAtractivos"),
+  localitySearch: document.getElementById("localitySearch"),
+  localitiesGrid: document.getElementById("localitiesGrid"),
+  localitiesCount: document.getElementById("localitiesCount")
+};
 
-    const els = {
-      menuToggle: document.getElementById("menuToggle"),
-      mainNav: document.getElementById("mainNav"),
-      search: document.getElementById("searchInput"),
-      localidad: document.getElementById("localidadSelect"),
-      categoria: document.getElementById("categoriaSelect"),
-      tipo: document.getElementById("tipoSelect"),
-      fecha: document.getElementById("fechaSelect"),
-      clear: document.getElementById("clearFilters"),
-      cards: document.getElementById("cardsContainer"),
-      summary: document.getElementById("resultsSummary"),
-      badge: document.getElementById("mapBadgeText"),
-      fallback: document.getElementById("mapFallback"),
-      mapCanvas: document.getElementById("mapCanvas"),
-      drawer: document.getElementById("detailDrawer"),
-      drawerHero: document.getElementById("drawerHero"),
-      drawerBody: document.getElementById("drawerBody"),
-      statTotal: document.getElementById("statTotal"),
-      statLocalidades: document.getElementById("statLocalidades"),
-      statEventos: document.getElementById("statEventos"),
-      statAtractivos: document.getElementById("statAtractivos")
-    };
+document.addEventListener("DOMContentLoaded", init);
 
-    document.addEventListener("DOMContentLoaded", init);
+function init() {
+  updateWeekendOptionLabel();
+  bindEvents();
+  loadItems();
+  loadLocalities();
+  loadGoogleMaps();
+}
 
-    function init() {
-      bindEvents();
-      loadItems();
-      loadGoogleMaps();
-    }
+function bindEvents() {
+  if (els.menuToggle && els.mainNav) {
+    els.menuToggle.addEventListener("click", () => {
+      const open = els.mainNav.classList.toggle("is-open");
+      els.menuToggle.setAttribute("aria-expanded", String(open));
+    });
+    els.mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      els.mainNav.classList.remove("is-open");
+      els.menuToggle.setAttribute("aria-expanded", "false");
+    }));
+  }
 
-    function bindEvents() {
-      els.menuToggle.addEventListener("click", () => {
-        const open = els.mainNav.classList.toggle("is-open");
-        els.menuToggle.setAttribute("aria-expanded", String(open));
-      });
-      els.mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
-        els.mainNav.classList.remove("is-open");
-        els.menuToggle.setAttribute("aria-expanded", "false");
-      }));
-      [els.search, els.localidad, els.categoria, els.tipo, els.fecha].forEach(input => {
-        input.addEventListener("input", applyFilters);
-        input.addEventListener("change", applyFilters);
-      });
-      els.clear.addEventListener("click", () => {
-        els.search.value = "";
-        els.localidad.value = "";
-        els.categoria.value = "";
-        els.tipo.value = "";
-        els.fecha.value = "";
-        applyFilters();
-      });
-      document.querySelectorAll("[data-close-drawer]").forEach(el => el.addEventListener("click", closeDrawer));
-      document.addEventListener("keydown", event => {
-        if (event.key === "Escape") closeDrawer();
-      });
-    }
+  [els.search, els.localidad, els.categoria, els.tipo, els.fecha].filter(Boolean).forEach(input => {
+    input.addEventListener("input", applyFilters);
+    input.addEventListener("change", applyFilters);
+  });
 
-    async function loadItems() {
-      try {
-        if (CONFIG.DATA_ENDPOINT) {
-          const response = await fetch(CONFIG.DATA_ENDPOINT, { cache: "no-store" });
-          if (!response.ok) throw new Error("No se pudo cargar la información");
-          const payload = await response.json();
-          const rows = Array.isArray(payload) ? payload : payload.data;
-          state.allItems = rows.map(normalizeItem).filter(Boolean);
-        }
-      } catch (error) {
-        console.warn(error);
-      }
-      if (!state.allItems.length) state.allItems = SAMPLE_DATA.map(normalizeItem).filter(Boolean);
-      populateFilters();
+  if (els.clear) {
+    els.clear.addEventListener("click", () => {
+      els.search.value = "";
+      els.localidad.value = "";
+      els.categoria.value = "";
+      els.tipo.value = "";
+      els.fecha.value = "";
       applyFilters();
-      updateStats();
-    }
+    });
+  }
 
-    function loadGoogleMaps() {
-      const key = String(CONFIG.GOOGLE_MAPS_API_KEY || "").trim();
-      if (!key || key.includes("PEGAR")) {
-        showMapFallback();
-        return;
+  if (els.localitySearch) els.localitySearch.addEventListener("input", filterLocalities);
+  document.querySelectorAll("[data-close-drawer]").forEach(el => el.addEventListener("click", closeDrawer));
+  document.addEventListener("keydown", event => { if (event.key === "Escape") closeDrawer(); });
+}
+
+async function loadItems() {
+  state.itemsLoadError = false;
+  try {
+    if (!CONFIG.DATA_ENDPOINT) throw new Error("Falta DATA_ENDPOINT");
+    const response = await fetch(CONFIG.DATA_ENDPOINT, { cache: "no-store" });
+    if (!response.ok) throw new Error("No se pudo cargar la agenda");
+    const payload = await response.json();
+    const rows = Array.isArray(payload) ? payload : (payload.data || []);
+    state.allItems = rows.map(normalizeItem).filter(Boolean);
+  } catch (error) {
+    console.warn("Agenda:", error);
+    state.itemsLoadError = true;
+    state.allItems = [];
+  }
+  populateFilters();
+  applyInitialWeekendView();
+  applyFilters();
+  updateStats();
+}
+
+async function loadLocalities() {
+  state.localitiesLoadError = false;
+  const endpoint = String(CONFIG.LOCALITIES_ENDPOINT || "").trim();
+  if (!endpoint || endpoint.includes("PEGAR_URL")) {
+    state.localities = [];
+    renderLocalities("pending");
+    updateStats();
+    return;
+  }
+  try {
+    const response = await fetch(endpoint, { cache: "no-store" });
+    if (!response.ok) throw new Error("No se pudo cargar la información de localidades");
+    const payload = await response.json();
+    const rows = Array.isArray(payload) ? payload : (payload.data || []);
+    state.localities = rows.map(normalizeLocality).filter(Boolean);
+    state.filteredLocalities = [...state.localities];
+  } catch (error) {
+    console.warn("Localidades:", error);
+    state.localitiesLoadError = true;
+    state.localities = [];
+    state.filteredLocalities = [];
+  }
+  renderLocalities();
+  updateStats();
+}
+
+function loadGoogleMaps() {
+  const key = String(CONFIG.GOOGLE_MAPS_API_KEY || "").trim();
+  if (!key || key.includes("PEGAR")) {
+    showMapFallback();
+    return;
+  }
+  window.initMapaTuristico = () => {
+    state.googleReady = true;
+    buildMap();
+    renderMarkers();
+  };
+  const script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&callback=initMapaTuristico&loading=async`;
+  script.async = true;
+  script.defer = true;
+  script.onerror = showMapFallback;
+  document.head.appendChild(script);
+}
+
+function showMapFallback() {
+  if (els.fallback) {
+    els.fallback.classList.add("is-visible");
+    els.fallback.setAttribute("aria-hidden", "false");
+  }
+  if (els.badge) els.badge.textContent = "Abrí cada propuesta en Google Maps";
+}
+
+function buildMap() {
+  if (!window.google || !google.maps || !els.mapCanvas) return;
+  if (els.fallback) {
+    els.fallback.classList.remove("is-visible");
+    els.fallback.setAttribute("aria-hidden", "true");
+  }
+  state.map = new google.maps.Map(els.mapCanvas, {
+    center: CONFIG.DEFAULT_CENTER,
+    zoom: CONFIG.DEFAULT_ZOOM,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: true,
+    clickableIcons: true,
+    gestureHandling: "greedy",
+    styles: [
+      { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] },
+      { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#0b1e44" }] },
+      { featureType: "water", elementType: "geometry", stylers: [{ color: "#247af2" }] },
+      { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#ffffff" }] }
+    ]
+  });
+  state.infoWindow = new google.maps.InfoWindow();
+}
+
+function normalizeItem(source, index) {
+  const localidad = cleanLocalidad(source.localidad || source.Localidad || source.municipio || source.Municipio);
+  const nombre = clean(source.nombre || source.Nombre || source["Nombre (del lugar o evento)"] || source["Lugar, espacio o establecimiento"]);
+  if (!localidad || !nombre) return null;
+
+  const rawKind = normalizeText(source.kind || source.tipo_registro || source.categoria || source.Categoría || "");
+  const isAttraction = rawKind.includes("attraction") || rawKind.includes("atractivo") || rawKind.includes("sitio permanente");
+  const kind = isAttraction ? "attraction" : "event";
+
+  const categoria = clean(source.categoria || source.Categoría || (kind === "attraction" ? "Atractivos/sitios permanentes" : "Eventos"));
+  const categoriaMapa = stripTrailingPunctuation(source.categoria_mapa || source["Categoría dentro del mapa"] || "");
+  const tipo = stripTrailingPunctuation(source.tipo || source.Tipo || source["Tipo de evento o sitio turístico"] || source["Tipo de atractivo o experiencia"] || (kind === "attraction" ? categoriaMapa : "Evento"));
+
+  const fechaIso = clean(source.fecha_iso || "");
+  const fecha = formatDisplayDate(source.fecha || source.Fecha || source["Fecha y hora (para los eventos)"] || fechaIso);
+  const hora = formatDisplayTime(source.hora || source.Hora || source["Hora:"] || "") || extractTimeFromDateTime(source["Fecha y hora (para los eventos)"] || "");
+  const horarios = clean(source.horarios || source["Días y horarios de visita"] || "");
+
+  const direccion = clean(source.direccion || source.Dirección || source["Dirección o referencia para llegar"] || "");
+  const ubicacion = clean(source.ubicacion || source.Ubicación || source["Ubicación del lugar o evento (INSERTAR EL LINK DE LA UBICACIÓN DE GOOGLE MAPS)"] || direccion);
+  const descripcion = clean(source.descripcion || source.Descripción || source["Descripción del evento o sitio (incluir si se cobra entrada)"] || source["Descripción breve del atractivo o experiencia"] || "");
+  const acceso = stripTrailingPunctuation(source.acceso || source["Modalidad de acceso"] || source["Modalidad de acceso  "] || "");
+  const contacto = clean(source.contacto || source["Contacto para consultas o reservas\nincluir teléfono, correo electrónico o WhatsApp."] || source["Contacto para consultas, reservas o inscripciones \nAclaración: incluir teléfono, correo electrónico o WhatsApp."] || "");
+  const servicios = clean(source.servicios || source["Servicios disponibles"] || "");
+  const accesibilidad = stripTrailingPunctuation(source.accesibilidad || source["¿Cuenta con condiciones de accesibilidad?"] || "");
+  const observaciones = clean(source.observaciones || source["Observaciones o información adicional"] || "");
+  const media = normalizeMediaUrl(source.multimedia_url || source.media || source.imagen || source["Piezas gráficas y multimedia (fotos, flyers) 2"] || source["Piezas gráficas y multimedia (fotos, flyers)"] || "");
+  const web = normalizeLink(source.web_instagram || source.web || source.instagram || source["Página web, red social o enlace oficial con más información"] || source["Página web o instagram"] || "");
+  const mapsRaw = normalizeMapUrl(source.maps_url || source.mapsUrl || source.google_maps || source["Enlace de ubicación en Google Maps"] || firstUrl(ubicacion) || "");
+
+  let coords = normalizeCoords(toNumber(source.lat), toNumber(source.lng));
+  if (!coords) coords = parseCoordsFromText([source.maps_url, ubicacion].filter(Boolean).join(" "));
+  if (!coords) coords = LOCALIDAD_COORDS[normalizeText(localidad)] || null;
+
+  const mapsUrl = mapsRaw || (coords ? makeDirectionsUrl(coords) : makeMapsSearchUrl([nombre, direccion, localidad, "Córdoba Argentina"].filter(Boolean).join(", ")));
+  const cardCategory = kind === "attraction" ? (categoriaMapa || "Atractivo") : (tipo || "Evento");
+  const color = colorFor(kind, cardCategory, tipo);
+
+  return {
+    id: String(source.id || source.ID || `item-${index}`),
+    kind,
+    localidad,
+    categoria,
+    categoria_mapa: categoriaMapa,
+    tipo,
+    cardCategory,
+    nombre,
+    fecha_iso: fechaIso,
+    fecha,
+    hora,
+    horarios,
+    ubicacion,
+    direccion,
+    descripcion,
+    acceso,
+    contacto,
+    servicios,
+    accesibilidad,
+    observaciones,
+    multimedia_url: media,
+    web_instagram: web,
+    maps_url: mapsUrl,
+    lat: coords ? coords.lat : null,
+    lng: coords ? coords.lng : null,
+    color,
+    dateObj: parseDate(fechaIso || fecha)
+  };
+}
+
+function normalizeLocality(source, index) {
+  const localidad = clean(source.localidad || source.Localidad || source.municipio || source["Municipio o localidad"]);
+  const identidad = clean(source.identidad || source["¿Cómo describiría brevemente la identidad turística de su localidad? - mencionar aquello que caracteriza o diferencia a la localidad-"] || "");
+  const fortalezas = clean(source.fortalezas || source["¿Cuáles considera que son las principales fortalezas turísticas del municipio?"] || "");
+  const fortalezasLista = Array.isArray(source.fortalezas_lista) ? source.fortalezas_lista.map(clean).filter(Boolean) : splitCommaList(fortalezas);
+  if (!localidad || (!identidad && !fortalezas)) return null;
+  return { id: String(source.id || `loc-${index}`), localidad: cleanLocalidad(localidad), identidad, fortalezas, fortalezas_lista: fortalezasLista };
+}
+
+function populateFilters() {
+  fillSelect(els.localidad, uniqueSorted(state.allItems.map(item => item.localidad)), "Todas");
+  fillSelect(els.categoria, uniqueSorted(state.allItems.map(item => displayTopCategory(item))), "Todas");
+  fillSelect(els.tipo, uniqueSorted(state.allItems.map(item => item.cardCategory)), "Todos");
+}
+
+function fillSelect(select, values, firstText) {
+  if (!select) return;
+  const current = select.value;
+  select.innerHTML = `<option value="">${escapeHtml(firstText)}</option>` + values.map(value => `<option value="${escapeAttr(value)}">${escapeHtml(value)}</option>`).join("");
+  if (values.includes(current)) select.value = current;
+}
+
+function getWeekendRange(baseDate = new Date()) {
+  const today = new Date(baseDate);
+  today.setHours(0, 0, 0, 0);
+  const day = today.getDay();
+  let saturday;
+  let sunday;
+
+  if (day === 0) {
+    saturday = new Date(today);
+    saturday.setDate(today.getDate() - 1);
+    sunday = new Date(today);
+  } else if (day === 6) {
+    saturday = new Date(today);
+    sunday = new Date(today);
+    sunday.setDate(today.getDate() + 1);
+  } else {
+    saturday = new Date(today);
+    saturday.setDate(today.getDate() + (6 - day));
+    sunday = new Date(saturday);
+    sunday.setDate(saturday.getDate() + 1);
+  }
+
+  saturday.setHours(0, 0, 0, 0);
+  sunday.setHours(23, 59, 59, 999);
+  return { saturday, sunday };
+}
+
+function updateWeekendOptionLabel() {
+  if (!els.fecha) return;
+  const option = els.fecha.querySelector('option[value="weekend"]');
+  if (!option) return;
+  const { saturday, sunday } = getWeekendRange();
+  const sameMonth = saturday.getMonth() === sunday.getMonth();
+  const monthSat = saturday.toLocaleDateString('es-AR', { month: 'short' }).replace('.', '');
+  const monthSun = sunday.toLocaleDateString('es-AR', { month: 'short' }).replace('.', '');
+  option.textContent = sameMonth
+    ? `Este fin de semana · ${saturday.getDate()}–${sunday.getDate()} ${monthSun}`
+    : `Este fin de semana · ${saturday.getDate()} ${monthSat}–${sunday.getDate()} ${monthSun}`;
+}
+
+function applyInitialWeekendView() {
+  if (state.initialWeekendApplied) return;
+  if (els.categoria && [...els.categoria.options].some(option => option.value === 'Eventos')) {
+    els.categoria.value = 'Eventos';
+  }
+  if (els.fecha) els.fecha.value = 'weekend';
+  state.initialWeekendApplied = true;
+}
+
+function isWeekendEventsView() {
+  return Boolean(els.categoria && els.fecha && els.categoria.value === 'Eventos' && els.fecha.value === 'weekend');
+}
+
+function applyFilters() {
+  const query = normalizeText(els.search ? els.search.value : "");
+  const localidad = els.localidad ? els.localidad.value : "";
+  const categoria = els.categoria ? els.categoria.value : "";
+  const tipo = els.tipo ? els.tipo.value : "";
+  const fecha = els.fecha ? els.fecha.value : "";
+
+  state.filteredItems = state.allItems.filter(item => {
+    const haystack = normalizeText([
+      item.nombre, item.localidad, item.cardCategory, item.tipo, item.categoria_mapa,
+      item.ubicacion, item.direccion, item.descripcion, item.acceso, item.servicios
+    ].join(" "));
+    const matchesQuery = !query || haystack.includes(query);
+    const matchesLocalidad = !localidad || item.localidad === localidad;
+    const matchesCategoria = !categoria || displayTopCategory(item) === categoria;
+    const matchesTipo = !tipo || item.cardCategory === tipo;
+    const matchesFecha = !fecha || matchesDateFilter(item, fecha);
+    return matchesQuery && matchesLocalidad && matchesCategoria && matchesTipo && matchesFecha;
+  });
+
+  renderCards();
+  renderMarkers();
+  updateSummary();
+}
+
+function renderMarkers() {
+  if (!state.googleReady || !state.map) return;
+  state.markers.forEach(marker => marker.setMap(null));
+  state.markers = [];
+  state.markersById.clear();
+
+  const mappable = state.filteredItems.filter(hasCoords);
+  const bounds = new google.maps.LatLngBounds();
+
+  mappable.forEach(item => {
+    const position = { lat: item.lat, lng: item.lng };
+    const marker = new google.maps.Marker({
+      position,
+      map: state.map,
+      title: item.nombre,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: item.color,
+        fillOpacity: 1,
+        strokeColor: "#ffffff",
+        strokeWeight: 3
       }
-      window.initMapaTuristico = () => {
-        state.googleReady = true;
-        buildMap();
-        renderMarkers();
-      };
-      const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&callback=initMapaTuristico&loading=async`;
-      script.async = true;
-      script.defer = true;
-      script.onerror = showMapFallback;
-      document.head.appendChild(script);
+    });
+    marker.addListener("click", () => openInfoWindow(item, marker));
+    state.markers.push(marker);
+    state.markersById.set(item.id, marker);
+    bounds.extend(position);
+  });
+
+  if (mappable.length > 1) {
+    state.map.fitBounds(bounds, { top: 80, right: 80, bottom: 80, left: 80 });
+  } else if (mappable.length === 1) {
+    state.map.setCenter({ lat: mappable[0].lat, lng: mappable[0].lng });
+    state.map.setZoom(14);
+  } else {
+    state.map.setCenter(CONFIG.DEFAULT_CENTER);
+    state.map.setZoom(CONFIG.DEFAULT_ZOOM);
+  }
+}
+
+function openInfoWindow(item, marker) {
+  if (!state.infoWindow) return;
+  state.infoWindow.setContent(infoWindowContent(item));
+  state.infoWindow.open({ map: state.map, anchor: marker });
+}
+
+function infoWindowContent(item) {
+  const timing = cardTiming(item);
+  return `
+    <div class="info-window">
+      <h3>${escapeHtml(item.nombre)}</h3>
+      <p class="iw-meta">${escapeHtml(item.localidad)} · ${escapeHtml(item.cardCategory)}</p>
+      ${timing ? `<p><strong>${escapeHtml(timing)}</strong></p>` : ""}
+      ${item.descripcion ? `<p>${escapeHtml(shorten(item.descripcion, 130))}</p>` : ""}
+      <div class="iw-actions">
+        ${item.maps_url ? `<a href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
+        <a class="secondary" href="#" onclick="window.openTourismDetail('${escapeAttr(item.id)}'); return false;">Ver ficha</a>
+      </div>
+    </div>`;
+}
+
+function renderCards() {
+  if (!els.cards) return;
+  if (state.itemsLoadError) {
+    els.cards.innerHTML = `<div class="empty-state"><h3>No pudimos cargar las propuestas</h3><p>Intentá nuevamente en unos minutos.</p></div>`;
+    return;
+  }
+  if (!state.filteredItems.length) {
+    if (isWeekendEventsView()) {
+      els.cards.innerHTML = `<div class="empty-state"><h3>No hay eventos cargados para este fin de semana</h3><p>Podés cambiar la fecha o limpiar los filtros para descubrir todas las propuestas.</p></div>`;
+    } else {
+      els.cards.innerHTML = `<div class="empty-state"><h3>No encontramos resultados</h3><p>Probá cambiar los filtros o realizar una búsqueda más amplia.</p></div>`;
     }
+    return;
+  }
 
-    function showMapFallback() {
-      els.fallback.classList.add("is-visible");
-      els.fallback.setAttribute("aria-hidden", "false");
-      els.badge.textContent = "Elegí una propuesta y abrila en Google Maps";
-    }
-
-    function buildMap() {
-      if (!window.google || !google.maps) return;
-      els.fallback.classList.remove("is-visible");
-      els.fallback.setAttribute("aria-hidden", "true");
-      state.map = new google.maps.Map(els.mapCanvas, {
-        center: CONFIG.DEFAULT_CENTER,
-        zoom: CONFIG.DEFAULT_ZOOM,
-        mapTypeControl: false,
-        streetViewControl: false,
-        fullscreenControl: true,
-        clickableIcons: true,
-        gestureHandling: "greedy",
-        styles: [
-          { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] },
-          { featureType: "administrative", elementType: "labels.text.fill", stylers: [{ color: "#0b1e44" }] },
-          { featureType: "water", elementType: "geometry", stylers: [{ color: "#b9d8ff" }] },
-          { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#f3f7ff" }] }
-        ]
-      });
-      state.infoWindow = new google.maps.InfoWindow();
-    }
-
-    function normalizeItem(source, index) {
-      const localidad = clean(source.localidad || source.Localidad || source.municipio || source.Municipio || source.comuna || source.Comuna);
-      const nombre = clean(source.nombre || source.Nombre || source["Nombre (del lugar o evento)"] || source.name || source.titulo || source.título);
-      if (!localidad || !nombre) return null;
-
-      const categoria = clean(source.categoria || source.Categoría || source.Categoria || source["Categoría"] || inferCategoria(source));
-      const tipo = clean(source.tipo || source.Tipo || source["Tipo de evento o sitio turístico"] || inferTipo(`${nombre} ${source.descripcion || source.Descripción || ""}`));
-      const fechaRaw = source.fecha || source.Fecha || source["Fecha y hora (para los eventos)"] || source.fecha_evento || source.fechaHora;
-      const horaRaw = source.hora || source.Hora || source["Hora:"] || source.horario || source.Horario;
-      const fecha = formatDisplayDate(fechaRaw);
-      const hora = formatDisplayTime(horaRaw) || extractTimeFromDateTime(fechaRaw);
-      const ubicacion = clean(source.ubicacion || source.Ubicación || source.Ubicacion || source["Ubicación del lugar o evento (INSERTAR EL LINK DE LA UBICACIÓN DE GOOGLE MAPS)"] || source.ubicacion_texto || source.direccion || source.Dirección || source.Direccion);
-      const descripcion = clean(source.descripcion || source.Descripción || source["Descripción del evento o sitio (incluir si se cobra entrada)"] || source.description);
-      const media = firstUrl(source.multimedia_url || source.media || source.imagen || source.imagen_url || source["Piezas gráficas y multimedia (fotos, flyers)"] || "");
-      const web = normalizeLink(source.web_instagram || source.web || source.instagram || source["Página web o instagram"] || "");
-      const mapsRaw = source.maps_url || source.mapsUrl || source.google_maps || source["Link de Google Maps"] || source["Google Maps"] || firstUrl(ubicacion) || "";
-      const coords = resolveCoords(source, localidad, index || 0, mapsRaw, ubicacion);
-      const mapsUrl = makeDirectionsUrl(coords, mapsRaw, [nombre, displayLocation(ubicacion, coords, localidad), localidad, "Córdoba Argentina"].join(" "));
-      const shownLocation = displayLocation(ubicacion, coords, localidad);
-
-      return {
-        id: String(source.id || source.ID || index || cryptoSafeId(nombre + localidad)),
-        localidad: cleanLocalidad(localidad),
-        categoria,
-        tipo,
-        nombre,
-        fecha,
-        hora,
-        ubicacion,
-        ubicacion_mostrada: shownLocation,
-        descripcion,
-        multimedia_url: media,
-        web_instagram: web,
-        maps_url: mapsUrl,
-        lat: coords.lat,
-        lng: coords.lng,
-        color: colorFor(tipo, categoria),
-        dateObj: parseDate(fecha)
-      };
-    }
-
-    function resolveCoords(source, localidad, index, mapsUrl, ubicacion) {
-      const latRaw = pickFirstField(source, [
-        "lat", "Lat", "LAT", "latitud", "Latitud", "LATITUD", "latitude", "Latitude", "coordenada_lat", "coordenada latitud", "Coordenada latitud"
-      ]);
-      const lngRaw = pickFirstField(source, [
-        "lng", "Lng", "LNG", "longitud", "Longitud", "LONGITUD", "longitude", "Longitude", "lon", "Lon", "coordenada_lng", "coordenada longitud", "Coordenada longitud"
-      ]);
-
-      const direct = normalizeCoords(toNumber(latRaw), toNumber(lngRaw));
-      if (direct) return direct;
-
-      const candidateTexts = [
-        source.coordenadas,
-        source.Coordenadas,
-        source.COORDENADAS,
-        source["Latitud y longitud"],
-        source["Coordenadas Google Maps"],
-        source["Ubicación"],
-        source["Ubicacion"],
-        source["Ubicación del lugar o evento (INSERTAR EL LINK DE LA UBICACIÓN DE GOOGLE MAPS)"],
-        ubicacion,
-        mapsUrl,
-        ...Object.values(source || {}).filter(value => /maps|google|@|-\d{1,3}[\.,]\d+/i.test(String(value || "")))
-      ];
-
-      for (const value of candidateTexts) {
-        const parsed = parseCoordsFromText(value);
-        if (parsed) return parsed;
-      }
-
-      const base = LOCALIDAD_COORDS[normalizeText(cleanLocalidad(localidad))] || CONFIG.DEFAULT_CENTER;
-      const offset = offsetForIndex(index);
-      return { lat: base.lat + offset.lat, lng: base.lng + offset.lng };
-    }
-
-    function pickFirstField(source, keys) {
-      if (!source) return "";
-      for (const key of keys) {
-        if (source[key] !== undefined && source[key] !== null && String(source[key]).trim() !== "") return source[key];
-      }
-      const normalized = {};
-      Object.keys(source).forEach(key => { normalized[normalizeText(key)] = source[key]; });
-      for (const key of keys) {
-        const value = normalized[normalizeText(key)];
-        if (value !== undefined && value !== null && String(value).trim() !== "") return value;
-      }
-      return "";
-    }
-
-    function normalizeCoords(lat, lng) {
-      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
-
-      if (isCordobaCoords(lat, lng) || isArgentinaCoords(lat, lng)) return { lat, lng };
-      if (isCordobaCoords(lng, lat) || isArgentinaCoords(lng, lat)) return { lat: lng, lng: lat };
-
-      // Si vienen invertidas como longitud/latitud, evita mandar puntos al mar.
-      if (lng >= -35 && lng <= -29 && lat >= -66.5 && lat <= -62) return { lat: lng, lng: lat };
-
-      // Fuera de Argentina: se descarta y se usa la localidad como respaldo.
-      return null;
-    }
-
-    function isCordobaCoords(lat, lng) {
-      return lat >= -33.5 && lat <= -29.5 && lng >= -66.8 && lng <= -62.5;
-    }
-
-    function isArgentinaCoords(lat, lng) {
-      return lat >= -55 && lat <= -21 && lng >= -74 && lng <= -53;
-    }
-
-    function offsetForIndex(index) {
-      const radius = 0.006 + (index % 5) * 0.0012;
-      const angle = (index * 137.508) * Math.PI / 180;
-      return { lat: Math.sin(angle) * radius, lng: Math.cos(angle) * radius };
-    }
-
-    function populateFilters() {
-      fillSelect(els.localidad, uniqueSorted(state.allItems.map(item => item.localidad)), "Todas");
-      fillSelect(els.categoria, uniqueSorted(state.allItems.map(item => item.categoria)), "Todas");
-      fillSelect(els.tipo, uniqueSorted(state.allItems.map(item => item.tipo)), "Todos");
-    }
-
-    function fillSelect(select, values, firstText) {
-      const current = select.value;
-      select.innerHTML = `<option value="">${escapeHtml(firstText)}</option>` + values.map(value => `<option value="${escapeAttr(value)}">${escapeHtml(value)}</option>`).join("");
-      if (values.includes(current)) select.value = current;
-    }
-
-    function applyFilters() {
-      const query = normalizeText(els.search.value);
-      const localidad = els.localidad.value;
-      const categoria = els.categoria.value;
-      const tipo = els.tipo.value;
-      const fecha = els.fecha.value;
-
-      state.filteredItems = state.allItems.filter(item => {
-        const haystack = normalizeText([item.nombre, item.localidad, item.categoria, item.tipo, item.ubicacion, item.ubicacion_mostrada, item.descripcion].join(" "));
-        const matchesQuery = !query || haystack.includes(query);
-        const matchesLocalidad = !localidad || item.localidad === localidad;
-        const matchesCategoria = !categoria || item.categoria === categoria;
-        const matchesTipo = !tipo || item.tipo === tipo;
-        const matchesFecha = !fecha || matchesDateFilter(item, fecha);
-        return matchesQuery && matchesLocalidad && matchesCategoria && matchesTipo && matchesFecha;
-      });
-
-      renderCards();
-      renderMarkers();
-      updateSummary();
-    }
-
-    function renderMarkers() {
-      if (!state.googleReady || !state.map) return;
-      state.markers.forEach(marker => marker.setMap(null));
-      state.markers = [];
-      state.markersById.clear();
-
-      const bounds = new google.maps.LatLngBounds();
-      state.filteredItems.forEach(item => {
-        const position = { lat: item.lat, lng: item.lng };
-        const marker = new google.maps.Marker({
-          position,
-          map: state.map,
-          title: item.nombre,
-          icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 10,
-            fillColor: item.color,
-            fillOpacity: 1,
-            strokeColor: "#ffffff",
-            strokeWeight: 3
-          }
-        });
-        marker.addListener("click", () => openInfoWindow(item, marker));
-        state.markers.push(marker);
-        state.markersById.set(item.id, marker);
-        bounds.extend(position);
-      });
-
-      if (state.filteredItems.length > 1) {
-        state.map.fitBounds(bounds, { top: 80, right: 80, bottom: 80, left: 80 });
-      } else if (state.filteredItems.length === 1) {
-        state.map.setCenter({ lat: state.filteredItems[0].lat, lng: state.filteredItems[0].lng });
-        state.map.setZoom(14);
-      } else {
-        state.map.setCenter(CONFIG.DEFAULT_CENTER);
-        state.map.setZoom(CONFIG.DEFAULT_ZOOM);
-      }
-    }
-
-    function openInfoWindow(item, marker) {
-      if (!state.infoWindow) return;
-      state.infoWindow.setContent(infoWindowContent(item));
-      state.infoWindow.open({ map: state.map, anchor: marker });
-    }
-
-    function infoWindowContent(item) {
-      return `
-        <div class="info-window">
-          <h3>${escapeHtml(item.nombre)}</h3>
-          <p class="iw-meta">${escapeHtml(item.localidad)} · ${escapeHtml(item.tipo)}</p>
-          ${scheduleText(item) ? `<p><strong>${escapeHtml(scheduleText(item))}</strong></p>` : ""}
-          ${item.descripcion ? `<p>${escapeHtml(shorten(item.descripcion, 130))}</p>` : ""}
-          <div class="iw-actions">
-            <a href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>
-            <a class="secondary" href="#" onclick="window.openTourismDetail('${escapeAttr(item.id)}'); return false;">Ver más</a>
-          </div>
-        </div>`;
-    }
-
-    function renderCards() {
-      if (!state.filteredItems.length) {
-        els.cards.innerHTML = `<div class="empty-state"><h3>No encontramos resultados</h3><p>Probá cambiar los filtros o realizar una búsqueda más amplia.</p></div>`;
-        return;
-      }
-      els.cards.innerHTML = state.filteredItems.map(item => {
-        const when = scheduleText(item);
-        return `
-        <article class="result-card result-card--simple">
-          <div class="result-card__body">
-            <div class="card-tags" aria-label="Categoría y localidad">
-              ${item.categoria ? `<span class="card-tag card-tag--category"><i style="background:${escapeAttr(item.color)}"></i>${escapeHtml(item.categoria)}</span>` : ""}
-              ${item.localidad ? `<span class="card-tag">${escapeHtml(item.localidad)}</span>` : ""}
-            </div>
-            <h3>${escapeHtml(item.nombre)}</h3>
-            <div class="meta"><span>${escapeHtml(when || "Fecha y horario a confirmar")}</span></div>
-            <div class="card-actions">
-              <button class="mini-btn" type="button" onclick="window.focusTourismPoint('${escapeAttr(item.id)}')">Ver en mapa</button>
-              ${item.maps_url ? `<a class="mini-btn" href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
-              <button class="mini-btn alt" type="button" onclick="window.openTourismDetail('${escapeAttr(item.id)}')">Ver ficha</button>
-            </div>
-          </div>
-        </article>`;
-      }).join("");
-    }
-
-    function updateSummary() {
-      const count = state.filteredItems.length;
-      els.summary.textContent = count === 1 ? "1 propuesta encontrada." : `${count} propuestas encontradas.`;
-      els.badge.textContent = count === 1 ? "1 propuesta en el mapa" : `${count} propuestas en el mapa`;
-    }
-
-    function updateStats() {
-      const localidades = new Set(state.allItems.map(item => item.localidad)).size;
-      const eventos = state.allItems.filter(item => normalizeText(item.categoria).includes("evento")).length;
-      const atractivos = Math.max(0, state.allItems.length - eventos);
-      els.statTotal.textContent = state.allItems.length;
-      els.statLocalidades.textContent = localidades;
-      els.statEventos.textContent = eventos;
-      els.statAtractivos.textContent = atractivos;
-    }
-
-    window.focusTourismPoint = function(id) {
-      const item = state.allItems.find(row => row.id === id);
-      if (!item) return;
-      if (state.map && state.googleReady) {
-        state.map.setCenter({ lat: item.lat, lng: item.lng });
-        state.map.setZoom(Math.max(state.map.getZoom(), 14));
-        const marker = state.markersById.get(id);
-        if (marker) openInfoWindow(item, marker);
-      }
-      document.getElementById("mapa").scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-
-    window.openTourismDetail = function(id) {
-      const item = state.allItems.find(row => row.id === id);
-      if (!item) return;
-      els.drawerHero.innerHTML = item.multimedia_url ? `<img src="${escapeAttr(item.multimedia_url)}" alt="${escapeAttr(item.nombre)}" onerror="this.remove()">` : "";
-      els.drawerBody.innerHTML = `
-        <div class="badges">
-          <span class="tag"><i style="background:${escapeAttr(item.color)}"></i>${escapeHtml(item.tipo)}</span>
-          <span class="tag">${escapeHtml(item.categoria)}</span>
+  els.cards.innerHTML = state.filteredItems.map(item => `
+    <article class="result-card result-card--simple">
+      <div class="result-card__body">
+        <div class="card-tags" aria-label="Categoría y localidad">
+          <span class="card-tag card-tag--category"><i style="background:${escapeAttr(item.color)}"></i>${escapeHtml(item.cardCategory)}</span>
+          <span class="card-tag">${escapeHtml(item.localidad)}</span>
         </div>
-        <h2 id="drawerTitle">${escapeHtml(item.nombre)}</h2>
-        <div class="detail-list">
-          <div class="detail-item"><small>Localidad</small><span>${escapeHtml(item.localidad)}</span></div>
-          ${scheduleText(item) ? `<div class="detail-item"><small>Fecha y horario</small><span>${escapeHtml(scheduleText(item))}</span></div>` : ""}
-          ${item.ubicacion_mostrada ? `<div class="detail-item"><small>Ubicación</small><span>${escapeHtml(item.ubicacion_mostrada)}</span></div>` : ""}
+        <h3>${escapeHtml(item.nombre)}</h3>
+        <div class="meta"><span>${escapeHtml(cardTiming(item))}</span></div>
+        <div class="card-actions">
+          ${hasCoords(item) ? `<button class="mini-btn" type="button" onclick="window.focusTourismPoint('${escapeAttr(item.id)}')">Ver en mapa</button>` : ""}
+          ${item.maps_url ? `<a class="mini-btn" href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
+          <button class="mini-btn alt" type="button" onclick="window.openTourismDetail('${escapeAttr(item.id)}')">Ver ficha</button>
         </div>
-        ${item.descripcion ? `<div class="drawer__text">${escapeHtml(item.descripcion)}</div>` : ""}
-        <div class="drawer__actions">
-          ${item.maps_url ? `<a class="btn btn-primary" href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
-          ${item.web_instagram ? `<a class="btn btn-light" href="${escapeAttr(item.web_instagram)}" target="_blank" rel="noopener">Más información</a>` : ""}
-        </div>
-      `;
-      els.drawer.classList.add("is-open");
-      els.drawer.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lock-scroll");
-    };
+      </div>
+    </article>`).join("");
+}
 
-    function closeDrawer() {
-      els.drawer.classList.remove("is-open");
-      els.drawer.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("lock-scroll");
+function updateSummary() {
+  if (!els.summary || !els.badge) return;
+  const count = state.filteredItems.length;
+  const mapCount = state.filteredItems.filter(hasCoords).length;
+  if (isWeekendEventsView()) {
+    els.summary.textContent = count === 1 ? "1 evento para este fin de semana." : `${count} eventos para este fin de semana.`;
+    els.badge.textContent = mapCount === 1 ? "1 evento este fin de semana" : `${mapCount} eventos este fin de semana`;
+    return;
+  }
+  els.summary.textContent = count === 1 ? "1 propuesta encontrada." : `${count} propuestas encontradas.`;
+  els.badge.textContent = mapCount === 1 ? "1 propuesta en el mapa" : `${mapCount} propuestas en el mapa`;
+}
+
+function updateStats() {
+  const agendaLocalities = state.allItems.map(item => item.localidad);
+  const profileLocalities = state.localities.map(item => item.localidad);
+  const localidades = new Set([...agendaLocalities, ...profileLocalities].filter(Boolean)).size;
+  const eventos = state.allItems.filter(item => item.kind === "event").length;
+  const atractivos = state.allItems.filter(item => item.kind === "attraction").length;
+  if (els.statTotal) els.statTotal.textContent = state.allItems.length || "0";
+  if (els.statLocalidades) els.statLocalidades.textContent = localidades || "0";
+  if (els.statEventos) els.statEventos.textContent = eventos || "0";
+  if (els.statAtractivos) els.statAtractivos.textContent = atractivos || "0";
+}
+
+window.focusTourismPoint = function(id) {
+  const item = state.allItems.find(row => row.id === id);
+  if (!item) return;
+  if (hasCoords(item) && state.map && state.googleReady) {
+    state.map.setCenter({ lat: item.lat, lng: item.lng });
+    state.map.setZoom(Math.max(state.map.getZoom() || 0, 14));
+    const marker = state.markersById.get(id);
+    if (marker) openInfoWindow(item, marker);
+    document.getElementById("mapa").scrollIntoView({ behavior: "smooth", block: "start" });
+  } else if (item.maps_url) {
+    window.open(item.maps_url, "_blank", "noopener");
+  }
+};
+
+window.openTourismDetail = function(id) {
+  const item = state.allItems.find(row => row.id === id);
+  if (!item) return;
+
+  els.drawerHero.classList.remove("is-hidden");
+  els.drawerHero.innerHTML = item.multimedia_url
+    ? `<img src="${escapeAttr(item.multimedia_url)}" alt="${escapeAttr(item.nombre)}" onerror="this.parentElement.classList.add('image-failed'); this.remove();">`
+    : "";
+
+  if (item.kind === "event") {
+    els.drawerBody.innerHTML = eventDetailHtml(item);
+  } else {
+    els.drawerBody.innerHTML = attractionDetailHtml(item);
+  }
+  openDrawer();
+};
+
+function eventDetailHtml(item) {
+  return `
+    <div class="badges">
+      <span class="tag"><i style="background:${escapeAttr(item.color)}"></i>${escapeHtml(item.tipo || "Evento")}</span>
+      <span class="tag">Evento</span>
+    </div>
+    <h2 id="drawerTitle">${escapeHtml(item.nombre)}</h2>
+    <div class="detail-list">
+      <div class="detail-item"><small>Localidad</small><span>${escapeHtml(item.localidad)}</span></div>
+      ${scheduleText(item) ? `<div class="detail-item"><small>Fecha y horario</small><span>${escapeHtml(scheduleText(item))}</span></div>` : ""}
+      ${item.acceso ? `<div class="detail-item"><small>Modalidad de acceso</small><span>${escapeHtml(item.acceso)}</span></div>` : ""}
+    </div>
+    ${item.descripcion ? `<div class="drawer-section"><h3>Sobre la propuesta</h3><div class="drawer__text">${escapeHtml(item.descripcion)}</div></div>` : ""}
+    ${item.contacto ? `<div class="drawer-section"><h3>Contacto</h3><p class="drawer__text">${escapeHtml(item.contacto)}</p></div>` : ""}
+    <div class="drawer__actions">
+      ${item.maps_url ? `<a class="btn btn-primary" href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
+      ${item.web_instagram ? `<a class="btn btn-light" href="${escapeAttr(item.web_instagram)}" target="_blank" rel="noopener">Más información</a>` : ""}
+    </div>`;
+}
+
+function attractionDetailHtml(item) {
+  const services = splitCommaList(item.servicios);
+  return `
+    <div class="badges">
+      <span class="tag"><i style="background:${escapeAttr(item.color)}"></i>${escapeHtml(item.categoria_mapa || "Atractivo")}</span>
+      ${item.tipo ? `<span class="tag">${escapeHtml(item.tipo)}</span>` : ""}
+    </div>
+    <h2 id="drawerTitle">${escapeHtml(item.nombre)}</h2>
+    <div class="detail-list">
+      <div class="detail-item"><small>Localidad</small><span>${escapeHtml(item.localidad)}</span></div>
+      ${item.direccion ? `<div class="detail-item"><small>Dirección o referencia</small><span>${escapeHtml(item.direccion)}</span></div>` : ""}
+      ${item.horarios ? `<div class="detail-item"><small>Días y horarios</small><span>${escapeHtml(item.horarios)}</span></div>` : ""}
+      ${item.acceso ? `<div class="detail-item"><small>Modalidad de acceso</small><span>${escapeHtml(item.acceso)}</span></div>` : ""}
+      ${item.accesibilidad ? `<div class="detail-item"><small>Accesibilidad</small><span>${escapeHtml(item.accesibilidad)}</span></div>` : ""}
+    </div>
+    ${item.descripcion ? `<div class="drawer-section"><h3>Sobre este lugar</h3><div class="drawer__text">${escapeHtml(item.descripcion)}</div></div>` : ""}
+    ${services.length ? `<div class="drawer-section"><h3>Servicios disponibles</h3><div class="service-chips">${services.map(s => `<span>${escapeHtml(s)}</span>`).join("")}</div></div>` : ""}
+    ${item.contacto ? `<div class="drawer-section"><h3>Contacto</h3><p class="drawer__text">${escapeHtml(item.contacto)}</p></div>` : ""}
+    ${item.observaciones ? `<div class="drawer-section"><h3>Información a tener en cuenta</h3><p class="drawer__text">${escapeHtml(item.observaciones)}</p></div>` : ""}
+    <div class="drawer__actions">
+      ${item.maps_url ? `<a class="btn btn-primary" href="${escapeAttr(item.maps_url)}" target="_blank" rel="noopener">Cómo llegar</a>` : ""}
+      ${item.web_instagram ? `<a class="btn btn-light" href="${escapeAttr(item.web_instagram)}" target="_blank" rel="noopener">Más información</a>` : ""}
+    </div>`;
+}
+
+function filterLocalities() {
+  const query = normalizeText(els.localitySearch ? els.localitySearch.value : "");
+  state.filteredLocalities = state.localities.filter(item => {
+    const haystack = normalizeText([item.localidad, item.identidad, item.fortalezas].join(" "));
+    return !query || haystack.includes(query);
+  });
+  renderLocalities();
+}
+
+function renderLocalities(mode) {
+  if (!els.localitiesGrid || !els.localitiesCount) return;
+  if (mode === "pending") {
+    els.localitiesCount.textContent = "Información en preparación";
+    els.localitiesGrid.innerHTML = `<div class="localities-empty"><h3>Próximamente</h3><p>Estamos incorporando la identidad turística de las localidades metropolitanas.</p></div>`;
+    return;
+  }
+  if (state.localitiesLoadError) {
+    els.localitiesCount.textContent = "";
+    els.localitiesGrid.innerHTML = `<div class="localities-empty"><h3>No pudimos cargar las localidades</h3><p>Intentá nuevamente en unos minutos.</p></div>`;
+    return;
+  }
+  const list = state.filteredLocalities.length || (els.localitySearch && els.localitySearch.value) ? state.filteredLocalities : state.localities;
+  els.localitiesCount.textContent = list.length === 1 ? "1 localidad" : `${list.length} localidades`;
+  if (!list.length) {
+    els.localitiesGrid.innerHTML = `<div class="localities-empty"><h3>No encontramos resultados</h3><p>Probá con otra búsqueda.</p></div>`;
+    return;
+  }
+  els.localitiesGrid.innerHTML = list.map(item => `
+    <article class="locality-card">
+      <div class="locality-card__accent"></div>
+      <div class="locality-card__body">
+        <span class="locality-card__eyebrow">Región Metropolitana</span>
+        <h3>${escapeHtml(item.localidad)}</h3>
+        ${item.identidad ? `<p>${escapeHtml(shorten(item.identidad, 210))}</p>` : ""}
+        ${item.fortalezas_lista.length ? `<div class="locality-strength-preview">${item.fortalezas_lista.slice(0, 3).map(v => `<span>${escapeHtml(v)}</span>`).join("")}</div>` : ""}
+        <button class="locality-more" type="button" onclick="window.openLocalityDetail('${escapeAttr(item.id)}')">Conocer localidad</button>
+      </div>
+    </article>`).join("");
+}
+
+window.openLocalityDetail = function(id) {
+  const item = state.localities.find(row => row.id === id);
+  if (!item) return;
+  els.drawerHero.classList.add("is-hidden");
+  els.drawerHero.innerHTML = "";
+  els.drawerBody.innerHTML = `
+    <div class="badges"><span class="tag">Nuestras localidades</span></div>
+    <h2 id="drawerTitle">${escapeHtml(item.localidad)}</h2>
+    ${item.identidad ? `<div class="drawer-section"><h3>Identidad turística</h3><div class="drawer__text">${escapeHtml(item.identidad)}</div></div>` : ""}
+    ${item.fortalezas_lista.length ? `<div class="drawer-section"><h3>Principales fortalezas turísticas</h3><div class="service-chips service-chips--large">${item.fortalezas_lista.map(v => `<span>${escapeHtml(v)}</span>`).join("")}</div></div>` : (item.fortalezas ? `<div class="drawer-section"><h3>Principales fortalezas turísticas</h3><div class="drawer__text">${escapeHtml(item.fortalezas)}</div></div>` : "")}
+    <div class="drawer__actions"><a class="btn btn-primary" href="#mapa" onclick="closeDrawer()">Explorar propuestas</a></div>`;
+  openDrawer();
+};
+
+function openDrawer() {
+  els.drawer.classList.add("is-open");
+  els.drawer.setAttribute("aria-hidden", "false");
+  document.body.classList.add("lock-scroll");
+}
+
+function closeDrawer() {
+  if (!els.drawer) return;
+  els.drawer.classList.remove("is-open");
+  els.drawer.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("lock-scroll");
+}
+
+function matchesDateFilter(item, filter) {
+  if (item.kind !== "event" || !item.dateObj) return false;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const date = new Date(item.dateObj);
+  date.setHours(0,0,0,0);
+  if (filter === "today") return date.getTime() === today.getTime();
+  if (filter === "month") return date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear();
+  if (filter === "weekend") {
+    const { saturday, sunday } = getWeekendRange(today);
+    return date >= saturday && date <= sunday;
+  }
+  return true;
+}
+
+function displayTopCategory(item) {
+  return item.kind === "event" ? "Eventos" : "Atractivos";
+}
+
+function cardTiming(item) {
+  if (item.kind === "event") return scheduleText(item) || "Fecha y horario a confirmar";
+  return item.horarios || "Atractivo permanente";
+}
+
+function scheduleText(item) {
+  return [item.fecha, item.hora ? `${item.hora} hs` : ""].filter(Boolean).join(" · ");
+}
+
+function hasCoords(item) {
+  return Number.isFinite(item.lat) && Number.isFinite(item.lng);
+}
+
+function formatDisplayDate(value) {
+  const text = clean(value);
+  if (!text) return "";
+  const iso = text.match(/(20\d{2})[-/](\d{1,2})[-/](\d{1,2})/);
+  if (iso) return `${pad2(iso[3])}/${pad2(iso[2])}/${iso[1]}`;
+  const ar = text.match(/(\d{1,2})[/-](\d{1,2})[/-](20\d{2})/);
+  if (ar) return `${pad2(ar[1])}/${pad2(ar[2])}/${ar[3]}`;
+  return text;
+}
+
+function formatDisplayTime(value) {
+  const text = clean(value);
+  if (!text) return "";
+  const decimal = Number(String(value).replace(',', '.'));
+  if (Number.isFinite(decimal) && decimal >= 0 && decimal < 1) {
+    const total = Math.round(decimal * 24 * 60);
+    return `${pad2(Math.floor(total / 60) % 24)}:${pad2(total % 60)}`;
+  }
+  const match = text.match(/(?:T|\s|^)(\d{1,2}):(\d{2})(?::\d{2})?/);
+  return match ? `${pad2(match[1])}:${pad2(match[2])}` : text.replace(/\s*hs\.?$/i, "");
+}
+
+function extractTimeFromDateTime(value) {
+  const text = clean(value);
+  const m = text.match(/(?:T|\s)(\d{1,2}):(\d{2})(?::\d{2})?/);
+  if (!m) return "";
+  const time = `${pad2(m[1])}:${pad2(m[2])}`;
+  return time === "00:00" ? "" : time;
+}
+
+function parseDate(value) {
+  const text = clean(value);
+  if (!text) return null;
+  let m = text.match(/(20\d{2})[-/](\d{1,2})[-/](\d{1,2})/);
+  if (m) return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  m = text.match(/(\d{1,2})[/-](\d{1,2})[/-](20\d{2})/);
+  if (m) return new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
+  return null;
+}
+
+function normalizeCoords(lat, lng) {
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+  if (lat >= -55 && lat <= -21 && lng >= -74 && lng <= -53) return { lat, lng };
+  if (lng >= -55 && lng <= -21 && lat >= -74 && lat <= -53) return { lat: lng, lng: lat };
+  return null;
+}
+
+function parseCoordsFromText(text) {
+  const value = decodeURIComponent(String(text || ""));
+  if (!value) return null;
+  const patterns = [
+    /@(-?\d{1,3}(?:[\.,]\d+)?),\s*(-?\d{1,3}(?:[\.,]\d+)?)/i,
+    /!3d(-?\d{1,3}(?:[\.,]\d+)?)!4d(-?\d{1,3}(?:[\.,]\d+)?)/i,
+    /[?&](?:query|q|ll)=(-?\d{1,3}(?:[\.,]\d+)?),\s*(-?\d{1,3}(?:[\.,]\d+)?)/i,
+    /^\s*(-?\d{1,3}(?:[\.,]\d+)?)\s*[,;]\s*(-?\d{1,3}(?:[\.,]\d+)?)\s*$/i
+  ];
+  for (const pattern of patterns) {
+    const match = value.match(pattern);
+    if (match) {
+      const coords = normalizeCoords(numberFromToken(match[1]), numberFromToken(match[2]));
+      if (coords) return coords;
     }
+  }
+  return null;
+}
 
-    function matchesDateFilter(item, filter) {
-      if (!item.dateObj) return false;
-      const today = new Date();
-      today.setHours(0,0,0,0);
-      const date = new Date(item.dateObj);
-      date.setHours(0,0,0,0);
-      if (filter === "today") return date.getTime() === today.getTime();
-      if (filter === "month") return date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear();
-      if (filter === "weekend") {
-        const day = today.getDay();
-        const saturday = new Date(today);
-        saturday.setDate(today.getDate() + ((6 - day + 7) % 7));
-        const sunday = new Date(saturday);
-        sunday.setDate(saturday.getDate() + 1);
-        return date >= saturday && date <= sunday;
-      }
-      return true;
-    }
+function colorFor(kind, category, tipo) {
+  const text = normalizeText(`${category} ${tipo}`);
+  if (text.includes("naturaleza") || text.includes("reserva") || text.includes("sendero") || text.includes("rio ")) return "#247af2";
+  if (text.includes("gastronomia")) return "#f15c27";
+  if (text.includes("patrimonio") || text.includes("historico") || text.includes("religioso") || text.includes("museo")) return "#9443ab";
+  if (text.includes("feria") || text.includes("fiesta")) return "#fbaf01";
+  if (text.includes("deporte") || text.includes("recreacion")) return "#3c46bd";
+  if (text.includes("cultura") || text.includes("festival") || text.includes("teatro")) return "#d64aac";
+  if (kind === "event") return "#dd3041";
+  return "#0b1e44";
+}
 
-    function formatDisplayDate(value) {
-      const text = clean(value);
-      if (!text) return "";
+function normalizeMediaUrl(value) {
+  const url = firstUrl(value) || clean(value);
+  if (!url) return "";
+  const drive = url.match(/[?&]id=([a-zA-Z0-9_-]+)/) || url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  return drive ? `https://drive.google.com/thumbnail?id=${encodeURIComponent(drive[1])}&sz=w1200` : url;
+}
 
-      // Google Sheets guarda algunos campos de hora como fecha base 1899/1900.
-      // Eso no debe mostrarse como fecha al público.
-      if (isSheetTimeAnchor(text)) return "";
+function normalizeMapUrl(value) {
+  const url = normalizeLink(value);
+  if (!url) return "";
+  return /google\.[^/]+\/maps|maps\.app\.goo\.gl|goo\.gl\/maps/i.test(url) ? url : "";
+}
 
-      const iso = text.match(/(20\d{2})[-/](\d{1,2})[-/](\d{1,2})/);
-      if (iso) return `${pad2(iso[3])}/${pad2(iso[2])}/${iso[1]}`;
+function normalizeLink(value) {
+  const text = clean(value);
+  if (!text) return "";
+  const url = firstUrl(text);
+  if (url) return url;
+  const handle = text.match(/@([a-zA-Z0-9._]+)/);
+  if (handle) return `https://www.instagram.com/${handle[1]}`;
+  if (/^www\./i.test(text)) return `https://${text}`;
+  return "";
+}
 
-      const ar = text.match(/(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})/);
-      if (ar) {
-        let year = ar[3];
-        if (year.length === 2) year = `20${year}`;
-        if (year === "1899" || year === "1900") return "";
-        return `${pad2(ar[1])}/${pad2(ar[2])}/${year}`;
-      }
+function firstUrl(value) {
+  const match = String(value || "").match(/https?:\/\/[^\s,]+/i);
+  return match ? match[0] : "";
+}
 
-      return text.replace(/\s+00:00:00$/, "");
-    }
+function makeDirectionsUrl(coords) {
+  return `https://www.google.com/maps/dir/?api=1&destination=${coords.lat},${coords.lng}`;
+}
 
-    function formatDisplayTime(value) {
-      const text = clean(value);
-      if (!text) return "";
+function makeMapsSearchUrl(query) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clean(query))}`;
+}
 
-      const decimal = Number(String(value).replace(',', '.'));
-      if (Number.isFinite(decimal) && decimal >= 0 && decimal < 1) {
-        const total = Math.round(decimal * 24 * 60);
-        const hh = Math.floor(total / 60) % 24;
-        const mm = total % 60;
-        return `${pad2(hh)}:${pad2(mm)} hs`;
-      }
+function splitCommaList(value) {
+  return clean(value).split(/\s*,\s*/).map(v => stripTrailingPunctuation(v)).filter(Boolean);
+}
 
-      const match = text.match(/(?:T|\s|^)(\d{1,2}):(\d{2})(?::\d{2})?/);
-      if (match) {
-        const hh = Number(match[1]);
-        const mm = Number(match[2]);
-        if (Number.isFinite(hh) && Number.isFinite(mm) && hh >= 0 && hh < 24 && mm >= 0 && mm < 60) {
-          return `${pad2(hh)}:${pad2(mm)} hs`;
-        }
-      }
+function stripTrailingPunctuation(value) {
+  return clean(value).replace(/[.;,]+$/, "").trim();
+}
 
-      // Si llega una fecha base de Sheets sin hora legible, no se muestra nada.
-      if (isSheetTimeAnchor(text)) return "";
-      return text;
-    }
+function clean(value) {
+  return String(value ?? "").replace(/\s+/g, " ").trim();
+}
 
-    function extractTimeFromDateTime(value) {
-      const time = formatDisplayTime(value);
-      if (!time) return "";
-      // Evita mostrar 00:00 hs cuando la planilla solo tiene una fecha sin hora.
-      return time === "00:00 hs" ? "" : time;
-    }
+function cleanLocalidad(value) {
+  return clean(value).replace(/^municipalidad\s+(de\s+)?/i, "").trim();
+}
 
-    function isSheetTimeAnchor(value) {
-      return /(?:1899|1900)[-/](?:12|0?1)[-/]\d{1,2}/.test(clean(value));
-    }
+function normalizeText(value) {
+  return clean(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+}
 
-    function scheduleText(item) {
-      return [item.fecha, item.hora].filter(Boolean).join(" · ");
-    }
+function uniqueSorted(values) {
+  return [...new Set(values.map(clean).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es"));
+}
 
-    function pad2(value) {
-      return String(value).padStart(2, "0");
-    }
+function toNumber(value) {
+  if (typeof value === "number") return Number.isFinite(value) ? value : NaN;
+  const text = String(value ?? "").trim();
+  if (!text) return NaN;
+  const number = Number(text.replace(/,/g, "."));
+  return Number.isFinite(number) ? number : NaN;
+}
 
-    function looksLikeCoords(value) {
-      return !!parseCoordsFromText(value) && /^\s*-?\d{1,3}[\.,]\d+\s*[,; ]\s*-?\d{1,3}[\.,]\d+\s*$/.test(String(value || ""));
-    }
+function numberFromToken(value) { return Number(String(value || "").replace(",", ".")); }
+function pad2(value) { return String(value).padStart(2, "0"); }
+function shorten(text, max) { const value = clean(text); return value.length > max ? value.slice(0, max - 1) + "…" : value; }
 
-    function displayLocation(ubicacion, coords, localidad) {
-      const text = clean(ubicacion);
-      if (!text || looksLikeCoords(text)) return localidad ? `Ubicación en ${cleanLocalidad(localidad)}` : "Ubicación disponible";
-      if (firstUrl(text) && coords) return localidad ? `Ubicación en ${cleanLocalidad(localidad)}` : "Ubicación disponible";
-      return text;
-    }
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>\"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[char]));
+}
+function escapeAttr(value) { return escapeHtml(value).replace(/'/g, "&#39;"); }
 
-    function makeDirectionsUrl(coords, raw, fallbackQuery) {
-      const rawUrl = normalizeMapUrl(raw);
-      if (coords && Number.isFinite(coords.lat) && Number.isFinite(coords.lng)) {
-        return `https://www.google.com/maps/dir/?api=1&destination=${coords.lat},${coords.lng}`;
-      }
-      if (rawUrl) return rawUrl;
-      return makeMapsSearchUrl(fallbackQuery);
-    }
-
-    function normalizeMapUrl(value) {
-      const url = normalizeLink(value);
-      if (!url) return "";
-      if (/google\.[^/]+\/maps|maps\.app\.goo\.gl|goo\.gl\/maps/i.test(url)) return url;
-      return "";
-    }
-
-    function parseDate(value) {
-      const text = clean(value);
-      if (!text) return null;
-      const iso = text.match(/(20\d{2})[-/](\d{1,2})[-/](\d{1,2})/);
-      if (iso) return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
-      const ar = text.match(/(\d{1,2})[/-](\d{1,2})[/-](20\d{2})/);
-      if (ar) return new Date(Number(ar[3]), Number(ar[2]) - 1, Number(ar[1]));
-      return null;
-    }
-
-    function inferCategoria(source) {
-      const text = `${source.fecha || ""} ${source["Fecha y hora (para los eventos)"] || ""} ${source.hora || ""}`;
-      return clean(text) ? "Eventos" : "Atractivos/sitios permanentes";
-    }
-
-    function inferTipo(text) {
-      const value = normalizeText(text);
-      if (/feria|artesano|mercado/.test(value)) return "Feria";
-      if (/gastronom|comida|food|criollo/.test(value)) return "Gastronomía";
-      if (/sender|natur|rio|río|reserva|cerro|parque|astrotur/.test(value)) return "Naturaleza";
-      if (/deporte|recreaci|autos|motos|carrera/.test(value)) return "Deporte/Recreación";
-      if (/patrimonio|historico|histórico|museo|capilla|estancia/.test(value)) return "Patrimonio histórico";
-      if (/relig|brochero|cura|iglesia/.test(value)) return "Turismo religioso";
-      if (/festival|cultura|teatro|musica|música|humor|danza/.test(value)) return "Festival/Cultura";
-      return "Otros";
-    }
-
-    function colorFor(tipo, categoria) {
-      const text = normalizeText(`${tipo} ${categoria}`);
-      if (text.includes("naturaleza")) return "#247af2";
-      if (text.includes("gastronomia")) return "#f15c27";
-      if (text.includes("patrimonio") || text.includes("religioso")) return "#9443ab";
-      if (text.includes("feria")) return "#fbaf01";
-      if (text.includes("deporte")) return "#3c46bd";
-      if (text.includes("cultura") || text.includes("festival")) return "#d64aac";
-      if (text.includes("evento")) return "#dd3041";
-      return "#0b1e44";
-    }
-
-    function clean(value) {
-      return String(value ?? "").replace(/\s+/g, " ").trim();
-    }
-
-    function cleanLocalidad(value) {
-      return clean(value).replace(/^municipalidad\s+/i, "").trim();
-    }
-
-    function normalizeText(value) {
-      return clean(value)
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/\s+/g, " ");
-    }
-
-    function uniqueSorted(values) {
-      return [...new Set(values.map(clean).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es"));
-    }
-
-    function toNumber(value) {
-      const text = String(value ?? "").trim();
-      if (!text) return NaN;
-      const normalized = text.replace(/,/g, ".");
-      const number = Number(normalized);
-      return Number.isFinite(number) ? number : NaN;
-    }
-
-    function numberFromToken(value) {
-      return Number(String(value || "").replace(",", "."));
-    }
-
-    function parseCoordsFromText(text) {
-      const value = decodeURIComponent(String(text || ""));
-      if (!value) return null;
-
-      const patterns = [
-        /@(-?\d{1,3}(?:[\.,]\d+)?),\s*(-?\d{1,3}(?:[\.,]\d+)?)/i,
-        /!3d(-?\d{1,3}(?:[\.,]\d+)?)!4d(-?\d{1,3}(?:[\.,]\d+)?)/i,
-        /[?&](?:query|q|ll)=(-?\d{1,3}(?:[\.,]\d+)?),\s*(-?\d{1,3}(?:[\.,]\d+)?)/i
-      ];
-
-      for (const pattern of patterns) {
-        const match = value.match(pattern);
-        if (match) {
-          const coords = normalizeCoords(numberFromToken(match[1]), numberFromToken(match[2]));
-          if (coords) return coords;
-        }
-      }
-
-      // Soporta campos escritos manualmente: "-31.333, -63.620" o "-31,333 ; -63,620".
-      const numbers = value.match(/-?\d{1,3}(?:[\.,]\d+)?/g);
-      if (numbers && numbers.length >= 2) {
-        for (let i = 0; i < numbers.length - 1; i++) {
-          const coords = normalizeCoords(numberFromToken(numbers[i]), numberFromToken(numbers[i + 1]));
-          if (coords) return coords;
-        }
-      }
-      return null;
-    }
-
-    function firstUrl(value) {
-      const match = String(value || "").match(/https?:\/\/[^\s,]+/i);
-      return match ? match[0] : "";
-    }
-
-    function normalizeLink(value) {
-      const text = clean(value);
-      if (!text) return "";
-      const url = firstUrl(text);
-      if (url) return url;
-      const handle = text.match(/@([a-zA-Z0-9._]+)/);
-      if (handle) return `https://www.instagram.com/${handle[1]}`;
-      if (/^www\./i.test(text)) return `https://${text}`;
-      return "";
-    }
-
-    function makeMapsSearchUrl(query) {
-      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clean(query))}`;
-    }
-
-    function shorten(text, max) {
-      const value = clean(text);
-      return value.length > max ? value.slice(0, max - 1) + "…" : value;
-    }
-
-    function cryptoSafeId(seed) {
-      let hash = 0;
-      for (let i = 0; i < seed.length; i++) hash = ((hash << 5) - hash + seed.charCodeAt(i)) | 0;
-      return `item-${Math.abs(hash)}`;
-    }
-
-    function escapeHtml(value) {
-      return String(value ?? "").replace(/[&<>"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[char]));
-    }
-
-    function escapeAttr(value) {
-      return escapeHtml(value).replace(/'/g, "&#39;");
-    }
   </script>
 </body>
 </html>
