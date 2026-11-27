@@ -26,3 +26,33 @@ Comprobación sintáctica JS y Chromium aislado con almacenamiento simulado: mod
 
 ## Entorno /pruebas/
 Este paquete utiliza almacenamiento local independiente de la versión estable (mtm-v41-pruebas-db-1 y mtm-route-v41-pruebas). Subir la carpeta pruebas completa a la raíz de la rama main; no reemplazar los archivos de la raíz. No contiene autenticación real.
+
+## V4.2 — Comunicación e Inteligencia Territorial
+
+Paquete preparado para la subcarpeta `pruebas/` existente. Mantiene la clave de datos de la V4.1 de pruebas y añade el modelo de comunicación al cargar. No altera `main` fuera de esa carpeta ni necesita modificar la configuración de Pages. Si se actualiza, conservar una copia JSON del navegador antes de comenzar.
+
+### Recorrido de prueba
+1. Ingresar como administrador del Ente > Comunicación > Convocatorias. Crear una solicitud para una o más localidades, con fecha y requisitos.
+2. Salir e ingresar como referente de una localidad convocada. Abrir Convocatorias y vincular propuestas, adjuntar imágenes autorizadas o responder sin propuestas. La opción Crear nueva propuesta crea un borrador vinculado y abre el editor existente. Finalizar y regresar a la convocatoria para enviar la respuesta.
+3. Volver al Ente > Comunicación > Convocatorias. Abrir seguimiento, exportar XLSX/ZIP y crear un enlace con las propuestas públicas de las respuestas enviadas.
+4. Abrir el enlace en el portal. Consultar una ficha, agregarla al recorrido y consultar el tablero de Impacto en el mismo navegador. Generar un QR para el canal correspondiente y exportar el informe Excel o utilizar Imprimir / PDF si el navegador permite imprimir.
+
+### Límites de la demo
+- Los perfiles son simulados. No hay autenticación ni autorización real, base de datos central, sincronización multiusuario, envío de correo ni protección de documentos privados. No cargar material sensible, datos personales, credenciales ni información operativa real. Las respuestas y métricas viven en localStorage; tienen límites de espacio. Los adjuntos de imagen se redimensionan (máximo 5 por respuesta); los videos se solicitan mediante enlaces. Los recordatorios automáticos se evalúan al ingresar o abrir Comunicación dentro de los tres días anteriores al vencimiento, no funcionan con la página cerrada. La segmentación territorial se define por selección manual de localidades, sin inventar divisiones oficiales.
+- Un enlace inteligente conserva su identificador y una copia inicial de parámetros públicos como respaldo. En un navegador nuevo se aplican esos parámetros sobre las publicaciones de muestra disponibles allí. Los cambios posteriores, las propuestas nuevas y fotos locales solo están disponibles donde existan esos datos; una URL/QR realmente dinámico entre dispositivos necesita el backend. Los QR se generan localmente; los enlaces demasiado largos pueden superar la capacidad del código. No se publican materiales privados en el enlace. La personalización de la tarjeta de vista previa en redes (Open Graph) exige servir metadatos específicos por URL y no está implementada en Pages.
+- Las métricas registran interacciones desde V4.2 en ese navegador, no números de toda la ciudadanía. Las sesiones se aproximan mediante un identificador de pestaña, no personas únicas; los clics hacia Maps no prueban viajes efectivos. El informe PDF se obtiene por la función de impresión del navegador. Se incluyen exportaciones XLSX reales y ZIP locales. Los datos históricos V4.1 no se reconstruyen artificialmente. La medición central, los recordatorios en segundo plano y permisos reales son requisitos del servidor definitivo.
+- No se añaden servicios pagos; QRCode for JavaScript (Kazuhiko Arase, MIT) y JSZip (licencia incluida en el archivo) están empaquetados en `gestion/comunicacion-admin.js`. Leaflet y los servicios de mapas/geocodificación siguen siendo dependencias externas existentes.
+
+### Validación local
+Sintaxis JavaScript comprobada. En Chromium con HTML/JS cargados localmente y almacenamiento/URL simulados (navegación de red bloqueada), se probó creación de convocatoria, respuesta municipal, exportación XLSX y ZIP, selección desde respuesta, enlace público, QR, registro de interacciones y visualización en tablero. El XLSX se abrió con openpyxl y el QR fue decodificado. Quedan por probar en el sitio real la instalación, los servicios externos, la impresión PDF y los demás casos límite. No usar la demo como sistema institucional en producción.
+
+
+## V4.3 — Identidad final
+Marca extraída de aplicaciones turismo .pdf, página 1. Logo claro adaptado a fondo blanco cambiando solo el lettering blanco a azul marino. Franja gráfica de la misma página. Lema gráfico de la versión anterior, coincidente con la campaña. Tipografías de interfaz de sistema provisionales: pendiente recibir nombres/archivos web autorizados. Funcionalidades y almacenamiento de V4.2 sin cambios. Entorno estático de demostración, no apto para datos privados.
+
+## V4.4 — Experiencia visual y movimiento
+- Portada editorial con el lema y la marca oficiales, sin espacios de fotos pendientes. El collage admite más imágenes cuando se incorporen al catálogo; actualmente se usa la única imagen de referencia disponible, no un conjunto de fotografías oficiales definitivas.
+- Animación de entrada, aparición de secciones al hacer scroll, transiciones de navegación, tarjetas y diálogos; se respeta `prefers-reduced-motion`.
+- Navegación móvil inferior, filtros con contador y restablecimiento, alternancia de listado/mapa, fichas con acciones visibles y recorrido con progreso de paradas. Ajustes visuales al administrador y acceso institucional.
+- No altera las claves de almacenamiento ni el código de Comunicación. Copia local de pruebas, sin modificaciones remotas. Los servicios externos y el backend definitivo siguen pendientes de validación. Las capturas locales pueden mostrar el esquema regional de respaldo, no las teselas reales.
+- Actualización desde V4.3: reemplazar `index.html`, `public.js`, `style.css`, `README.md` y añadir `motion.js` en `pruebas/`; reemplazar `index.html` y `admin.css` en `pruebas/gestion/`. No tocar la raíz de `main` ni eliminar los demás archivos.
